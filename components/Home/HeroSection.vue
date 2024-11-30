@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="slider h-[650px] mb-[165px]">
+  <section class="slider h-[650px] mb-[165px]">
     <div class="container relative mx-auto flex-center">
       <img
         class="absolute left-0 translate-x-[100px] z-10"
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped>
 .slider {

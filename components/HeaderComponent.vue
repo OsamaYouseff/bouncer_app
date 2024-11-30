@@ -32,7 +32,6 @@ const links = [
     path: "/accessories",
   },
 ];
-
 const langOptions = [
   {
     value: "en",
