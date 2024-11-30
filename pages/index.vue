@@ -2,4 +2,6 @@
   <div>Home</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({ title: "Bouncer | Home " });
+</script>

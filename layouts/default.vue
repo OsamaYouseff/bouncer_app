@@ -1,5 +1,9 @@
 <template>
-    <div>
-        <slot />
-    </div>
+  <div>
+    <HeaderComponent />
+    <slot />
+    <FooterComponent />
+  </div>
 </template>
+
+<script lang="ts" setup></script>
