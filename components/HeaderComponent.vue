@@ -29,7 +29,7 @@ const currencyOptions = [
 </script>
 
 <template>
-  <header class="">
+  <header style="border-bottom: 1px solid #fafafb">
     <div class="container mx-auto flex items-center justify-between">
       <div class="lang-currency flex items-center justify-center">
         <div class="lang">
