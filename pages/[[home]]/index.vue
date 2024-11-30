@@ -1,6 +1,11 @@
 <template>
   <HomeHeroSection />
   <ContentSection />
+  <HomeBanner />
+  <HomeFeatures />
+  <HomeNewsSection />
+  <HomeFeaturedProductsSection />
+  <HomeSearchQuery />
 </template>
 
 <script setup lang="ts">

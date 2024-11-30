@@ -33,7 +33,7 @@ const filters = [
 </script>
 
 <template>
-  <section class="min-h-screen flex-col-center py-20 mb-10">
+  <section class="flex-col-center py-20">
     <div class="container mx-auto">
       <h1 class="text-center mb-6 text-[30px]">BEST SELLER</h1>
       <!-- filters -->

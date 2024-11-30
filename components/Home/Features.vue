@@ -1,0 +1,57 @@
+<template>
+  <section class="my-20">
+    <div class="container mx-auto flex-center gap-10 max-w-[1170px]">
+      <!--  Feature box -->
+      <div
+        class="feature-box transition rounded cursor-pointer py-6 px-4 grow text-center flex-col-center align-center gap-4 m-w-[330px]"
+      >
+        <img src="@/assets/icons/shipping.svg" alt="feature-img" />
+        <h2>FREE SHIPPING</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in
+          similique id reprehenderit harum ab qui tenetur nihil repellendus
+          exercitationem. Aliquam quisquam provident
+        </p>
+      </div>
+      <!--  Feature box -->
+      <div
+        class="feature-box transition rounded cursor-pointer py-6 px-4 grow text-center flex-col-center align-center gap-4 min-w-[330px]"
+      >
+        <img src="@/assets/icons/refund.svg" alt="feature-img" />
+        <h2>FREE SHIPPING</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in
+          similique id reprehenderit harum ab qui tenetur nihil repellendus
+          exercitationem. Aliquam quisquam provident
+        </p>
+      </div>
+      <!--  Feature box -->
+      <div
+        class="feature-box transition rounded cursor-pointer py-6 px-4 grow text-center flex-col-center align-center gap-4 min-w-[330px]"
+      >
+        <img src="@/assets/icons/support.svg" alt="feature-img" />
+        <h2>FREE SHIPPING</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in
+          similique id reprehenderit harum ab qui tenetur nihil repellendus
+          exercitationem. Aliquam quisquam provident
+        </p>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+img {
+  max-width: 60px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  border: 1px solid transparent;
+}
+
+.feature-box:hover {
+  border-color: var(--primary);
+}
+</style>
