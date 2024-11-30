@@ -38,6 +38,7 @@ button {
 
 :root {
   --gray: #929292;
+  --primary: #33A0FF;
 }
 
 .flex {

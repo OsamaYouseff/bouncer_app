@@ -29,8 +29,11 @@ const currencyOptions = [
 </script>
 
 <template>
-  <header style="border-bottom: 1px solid #fafafb">
-    <div class="container mx-auto flex items-center justify-between">
+  <header>
+    <div
+      class="top-header container mx-auto flex items-center justify-between mb-10"
+      style="border-bottom: 1px solid #fafafb"
+    >
       <div class="lang-currency flex items-center justify-center">
         <div class="lang">
           <el-select
@@ -94,6 +97,22 @@ const currencyOptions = [
         </ul>
       </nav>
     </div>
+
+    <div class="bottom-header pb-4">
+      <NuxtLink to="/" class="img-container flex-center mb-10">
+        <img src="@/assets/icons/logo2.svg" alt="logo-icon" />
+      </NuxtLink>
+      <div class="nav-links">
+        <ul class="flex-center gap-4 uppercase font-[400]">
+          <li class="active">home</li>
+          <li>store</li>
+          <li>iphone</li>
+          <li>ipad</li>
+          <li>macbook</li>
+          <li>accessories</li>
+        </ul>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -104,5 +123,15 @@ const currencyOptions = [
 
 .el-menu--horizontal > .el-menu-item:nth-child(1) {
   margin-right: auto;
+}
+.nav-links li {
+  cursor: pointer;
+}
+.nav-links li.active {
+  color: var(--primary);
+}
+
+.nav-links li:hover {
+  color: var(--primary);
 }
 </style>
