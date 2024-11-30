@@ -6,6 +6,33 @@ const langValue = ref<string>("EN");
 const currValue = ref<string>("USD");
 const searchValue = ref<string>("");
 
+const links = [
+  {
+    name: "home",
+    path: "/home",
+  },
+  {
+    name: "store",
+    path: "/store",
+  },
+  {
+    name: "iphone",
+    path: "/iphone",
+  },
+  {
+    name: "ipad",
+    path: "/ipad",
+  },
+  {
+    name: "macbook",
+    path: "/macbook",
+  },
+  {
+    name: "accessories",
+    path: "/accessories",
+  },
+];
+
 const langOptions = [
   {
     value: "en",
@@ -104,12 +131,15 @@ const currencyOptions = [
       </NuxtLink>
       <div class="nav-links">
         <ul class="flex-center gap-4 uppercase font-[400]">
-          <li class="active">home</li>
-          <li>store</li>
-          <li>iphone</li>
-          <li>ipad</li>
-          <li>macbook</li>
-          <li>accessories</li>
+          <li
+            v-for="link in links"
+            :key="link.name"
+            :class="{ active: $route.path == link.path }"
+          >
+            <NuxtLink :to="link.path">
+              {{ link.name }}
+            </NuxtLink>
+          </li>
         </ul>
       </div>
     </div>
