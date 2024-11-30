@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="slider h-[650px] mb-[180px]">
+  <div class="slider h-[650px] mb-[165px]">
     <div class="container relative mx-auto flex-center">
       <img
         class="absolute left-0 translate-x-[100px] z-10"
@@ -30,7 +30,11 @@
       </div>
     </div>
 
-    <div class="sections absolute b-0 flex" style="z-index: 9">
+    <!-- section boxes -->
+    <div
+      class="sections absolute flex"
+      style="z-index: 9; left: 50%; transform: translate(-50%, -15px)"
+    >
       <!-- section box -->
       <div
         class="section-box relative flex-between w-[390px] h-[280px] text-white"
