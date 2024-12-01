@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  maxHeight: {
+    type: String,
+  },
+});
+</script>
 <template>
-  <section class="flex-center px-6" style="background: var(--primary)">
+  <section class="banner flex-center px-6" style="background: var(--primary)">
     <div
+      :class="`max-h-[${props.maxHeight}]`"
       class="container xs:justify-center lg:w-[1170px] mx-auto h-[400px] lg:h-[600px] flex lg:justify-between"
     >
       <div class="text">
@@ -18,7 +25,11 @@
           SHOP NOW
         </NuxtLink>
       </div>
-      <div class="img-container lg:w-1/2 h-[600px]"></div>
+      <div
+        class="img-container lg:w-1/2 h-full"
+        :class="`
+        h-[${props.maxHeight}]`"
+      ></div>
     </div>
   </section>
 </template>
