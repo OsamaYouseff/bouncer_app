@@ -42,45 +42,45 @@
       >
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Information</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Service</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Extras</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">My Account</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Useful Links</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Our Offers</h3>
-          <p>About Us</p>
-          <p>Information</p>
-          <p>Privacy Policy</p>
-          <p>Terms & Conditions</p>
+          <NuxtLink>About Us</NuxtLink>
+          <NuxtLink>Information</NuxtLink>
+          <NuxtLink>Privacy Policy</NuxtLink>
+          <NuxtLink>Terms & Conditions</NuxtLink>
         </div>
       </div>
     </div>
@@ -116,5 +116,13 @@
   .bottom-bar > div > div {
     justify-content: center;
   }
+}
+
+a {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+a:hover {
+  color: var(--primary);
 }
 </style>
