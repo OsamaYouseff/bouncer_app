@@ -38,7 +38,7 @@ const filters = [
       <h1 class="text-center mb-6 text-[30px]">BEST SELLER</h1>
       <!-- filters -->
       <nav>
-        <ul class="flex-center gap-14 font-[400]">
+        <ul class="flex-center gap-14 font-[400] flex-wrap">
           <li
             v-for="filter in filters"
             :key="filter.name"
@@ -52,7 +52,9 @@ const filters = [
       </nav>
 
       <!-- products -->
-      <div class="product-container flex-center flex-wrap p-8 gap-10">
+      <div
+        class="product-container ml-5 flex md:justify-center md:flex-wrap overflow-scroll p-8 gap-10"
+      >
         <!-- product Box -->
         <Product v-for="product in 8" :key="product" :product="product" />
       </div>
@@ -67,6 +69,17 @@ const filters = [
 </template>
 
 <style scoped>
+@media (max-width: 1200px) {
+  section {
+    margin-top: 400px;
+  }
+}
+@media (max-width: 800px) {
+  section {
+    margin-top: 390px;
+  }
+}
+
 li.active,
 li:hover {
   color: var(--primary);

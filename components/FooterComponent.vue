@@ -2,18 +2,23 @@
 <template>
   <footer class="border-t py-10">
     <div class="container mx-auto">
-      <div class="top-layer flex-between border-b pb-10">
+      <!-- top header -->
+      <div
+        class="top-layer flex-between border-b px-4 pb-10 grow gap-4 flex-wrap sm:justify-center"
+      >
         <div class="logo-container">
           <img class="mb-6" src="@/assets/icons/logo.svg" alt="logo-icon" />
-          <p class="w-[269px] text-[#22262A] text-[12px] text-sm leading-5">
+          <p
+            class="md:max-w-[269px] text-[#22262A] text-[12px] text-sm leading-5"
+          >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever.Since the 1500s, when an unknown printer.
           </p>
         </div>
-        <div class="follow-us">
+        <div class="follow-us xs:mb-10 xs:grow">
           <h2 class="mb-6 text-[18px] font-medium">Follow US</h2>
-          <p class="w-[269px] mb-7 text-[12px]">
+          <p class="md:max-w-[269px] mb-7 text-[12px]">
             Since the 1500s, when an unknown printer took a galley of type and
             scrambled.
           </p>
@@ -22,16 +27,19 @@
             <img src="@/assets/icons/twitter.svg" alt="twitter-icon" />
           </div>
         </div>
-        <div class="contact-us text-[12px]">
+        <div class="contact-us text-[12px] md:max-w-[269px] grow">
           <h2 class="mb-6 text-[18px] font-medium">Contact US</h2>
-          <p class="w-[269px] mb-7 text-[12px]"></p>
           <p>My Company , 4578 Marmora Road, Glasgow</p>
           <p>D04 89GR</p>
           <p>Call us now: 0123-456-789</p>
           <p>Email: support@whatever.com</p>
         </div>
       </div>
-      <div class="bottom-layer py-10 flex-between gap-14">
+
+      <!-- bottom header -->
+      <div
+        class="bottom-layer pl-4 py-10 sm:justify-center grow flex lg:justify-between gap-14 flex-wrap"
+      >
         <div class="w-[148px] font-thin text-[14px] flex-col-center gap-2">
           <h3 class="mb-2 text-[18px] font-medium">Information</h3>
           <p>About Us</p>
@@ -76,9 +84,13 @@
         </div>
       </div>
     </div>
+
+    <!-- bottom bar -->
     <div class="bottom-bar pt-5 border-t">
-      <div class="container mx-auto">
-        <div class="flex-between">
+      <div class="container justify-center mx-auto">
+        <div
+          class="flex lg:justify-between sm:justify-center grow flex-wrap gap-4"
+        >
           <p class="text-[14px] text-[#C1C8CE]">
             © 2018 Ecommerce theme by www.bisenbaev.com
           </p>
@@ -97,4 +109,12 @@
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 768px) {
+  .top-layer,
+  .bottom-layer,
+  .bottom-bar > div > div {
+    justify-content: center;
+  }
+}
+</style>

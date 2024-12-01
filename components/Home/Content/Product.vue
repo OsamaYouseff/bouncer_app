@@ -11,7 +11,7 @@ const ratingValue = ref<number>(4);
 <template>
   <!-- product Box -->
   <div
-    class="product-box relative cursor-pointer transition border-gray-300 border w-[270px] h-[349px] rounded flex-col-center px-5 text-center"
+    class="product-box relative cursor-pointer transition border-gray-300 border min-w-[270px] h-[349px] rounded flex-col-center px-5 text-center"
   >
     <!-- hot -->
     <div

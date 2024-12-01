@@ -56,8 +56,9 @@ const currencyOptions = [
 
 <template>
   <header>
+    <!-- top header -->
     <div
-      class="top-header container mx-auto flex items-center justify-between mb-10"
+      class="top-header mt-1 container mx-auto flex items-center justify-between lg:mb-10 mb-4 flex-wrap gap-3"
       style="border-bottom: 1px solid #fafafb"
     >
       <div class="lang-currency flex items-center justify-center">
@@ -95,14 +96,14 @@ const currencyOptions = [
         </div>
       </div>
 
-      <nav class="flex items-center gap-8">
+      <nav class="flex items-center gap-4 flex-wrap justify-center">
         <ul class="flex-center gap-8 fw-bold">
-          <li class="flex-center gap-2">
+          <li class="flex-center gap-2 min-w-[100px]">
             <img src="@/assets/icons/profile.svg" alt="profile-icon" />
             <p class="text-sm">My Profile</p>
           </li>
           <li class="flex-between gap-4">
-            <div class="flex-center gap-2">
+            <div class="flex-center gap-2 min-w-[100px]">
               <img src="@/assets/icons/cart.svg" alt="cart-icon" />
               <p class="text-sm">{{ 0 }} Items</p>
             </div>
@@ -114,7 +115,7 @@ const currencyOptions = [
           <el-autocomplete
             v-model="searchValue"
             clearable
-            class="inline-input w-50"
+            class="inline-input min-w-[300px] border rounded-md"
           >
             <template #prefix>
               <img src="@/assets/icons/search.svg" />
@@ -124,12 +125,13 @@ const currencyOptions = [
       </nav>
     </div>
 
+    <!-- bottom header -->
     <div class="bottom-header pb-4">
-      <NuxtLink to="/" class="img-container flex-center mb-10">
+      <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4">
         <img src="@/assets/icons/logo2.svg" alt="logo-icon" />
       </NuxtLink>
-      <div class="nav-links">
-        <ul class="flex-center gap-4 uppercase font-[400]">
+      <div class="nav-links flex-center flex-wrap">
+        <ul class="flex-center flex-wrap gap-4 uppercase font-[400]">
           <li
             v-for="link in links"
             :key="link.name"
@@ -148,6 +150,12 @@ const currencyOptions = [
 <style scoped>
 * {
   box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .top-header {
+    justify-content: center;
+  }
 }
 
 .el-menu--horizontal > .el-menu-item:nth-child(1) {

@@ -6,6 +6,7 @@
   <HomeNewsSection />
   <HomeFeaturedProductsSection />
   <HomeSearchQuery />
+  <HomeMessagePopup />
 </template>
 
 <script setup lang="ts">
