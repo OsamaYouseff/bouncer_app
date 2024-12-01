@@ -57,6 +57,6 @@ img {
 }
 
 .feature-box:hover {
-  border-color: var(--primary);
+  border-color: #ff6876;
 }
 </style>

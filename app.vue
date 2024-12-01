@@ -57,6 +57,11 @@ button {
   justify-content: center;
   flex-direction: column;
 }
+.flex-col-start {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
 
 .flex-between {
   display: flex;
@@ -68,5 +73,24 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+button.el-dialog__headerbtn {
+  background: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  transform: translate(15px, -15px);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  button.el-dialog__headerbtn {
+    max-width: 30px;
+    max-height: 30px;
+    transform: translate(10px, -10px);
+  }
 }
 </style>

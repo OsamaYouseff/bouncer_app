@@ -5,6 +5,7 @@ import { ref } from "vue";
 const langValue = ref<string>("EN");
 const currValue = ref<string>("USD");
 const searchValue = ref<string>("");
+const activeLink = ref<string>("");
 
 const links = [
   {
@@ -126,7 +127,7 @@ const currencyOptions = [
     </div>
 
     <!-- bottom header -->
-    <div class="bottom-header pb-4">
+    <div class="bottom-header pb-8 relative">
       <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4">
         <img src="@/assets/icons/logo2.svg" alt="logo-icon" />
       </NuxtLink>
@@ -136,6 +137,8 @@ const currencyOptions = [
             v-for="link in links"
             :key="link.name"
             :class="{ active: $route.path == link.path }"
+            @mouseenter="activeLink = link.name"
+            @mouseleave="activeLink = ''"
           >
             <NuxtLink :to="link.path">
               {{ link.name }}
@@ -143,6 +146,12 @@ const currencyOptions = [
           </li>
         </ul>
       </div>
+
+      <LinksList
+        @mouseenter="activeLink = 'home'"
+        @mouseleave="activeLink = ''"
+        :activeLink="activeLink !== ''"
+      />
     </div>
   </header>
 </template>
@@ -164,7 +173,7 @@ const currencyOptions = [
 .nav-links li {
   cursor: pointer;
 }
-.nav-links li.active {
+.nav-links li:hover.active {
   color: var(--primary);
 }
 
