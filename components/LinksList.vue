@@ -5,57 +5,90 @@ const props = defineProps({
   },
 });
 
-console.log(props.activeLink);
 
 watchEffect(() => {
   if (props.activeLink) {
-    console.log(props.activeLink);
+    // console.log(props.activeLink);
   }
 });
 </script>
 
 <template>
-  <div
-    :class="{ show: props.activeLink }"
+  <div :class="{ show: props.activeLink }"
     class="links flex-center absolute translate-y-10 rounded shadow-lg top-1/2 z-30 right-1/2 translate-x-1/2 w-[1029px] max-w-[90%] bg-[#fefefe]"
-    style="border-top: 3px solid #f0f3f4"
-  >
-    <div
-      class="sections flex-wrap relative flex-between justify-start gap-5 grow p-10"
-    >
+    style="border-top: 3px solid #f0f3f4">
+    <div class="sections flex-wrap relative flex-between justify-start gap-5 grow p-10">
       <span class="triangle"></span>
       <div>
         <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
         <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
         </ul>
       </div>
       <div>
         <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
         <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
         </ul>
       </div>
       <div>
         <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
         <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
-          <li><NuxtLink> AirPods & wireless </NuxtLink></li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> AirPods & wireless </NuxtLink>
+          </li>
         </ul>
       </div>
     </div>
@@ -74,7 +107,7 @@ watchEffect(() => {
   z-index: 100;
 }
 
-.sections > div {
+.sections>div {
   flex-grow: 1;
   height: 100%;
   min-height: 300px;

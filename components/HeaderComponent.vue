@@ -59,40 +59,18 @@ const currencyOptions = [
   <header>
     <!-- top header -->
     <div class="top-header mt-1">
-      <div
-        class="container mx-auto flex items-center justify-between lg:mb-10 mb-4 flex-wrap gap-3"
-      >
+      <div class="container mx-auto flex items-center justify-between lg:mb-10 mb-4 flex-wrap gap-3">
         <div class="lang-currency flex items-center justify-center">
           <div class="lang">
-            <el-select
-              v-model="langValue"
-              placeholder="Select"
-              size="default"
-              style="width: 65px"
-            >
-              <el-option
-                style="box-shadow: none !important"
-                v-for="item in langOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
+            <el-select v-model="langValue" placeholder="Select" size="default" style="width: 65px">
+              <el-option style="box-shadow: none !important" v-for="item in langOptions" :key="item.value"
+                :label="item.label" :value="item.value" />
             </el-select>
           </div>
           <div class="currency">
-            <el-select
-              v-model="currValue"
-              placeholder="Select"
-              size="default"
-              style="width: 75px"
-            >
-              <el-option
-                style="box-shadow: none !important"
-                v-for="item in currencyOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
+            <el-select v-model="currValue" placeholder="Select" size="default" style="width: 75px">
+              <el-option style="box-shadow: none !important" v-for="item in currencyOptions" :key="item.value"
+                :label="item.label" :value="item.value" />
             </el-select>
           </div>
         </div>
@@ -113,11 +91,7 @@ const currencyOptions = [
           </ul>
 
           <ul>
-            <el-autocomplete
-              v-model="searchValue"
-              clearable
-              class="inline-input min-w-[300px] border rounded-md"
-            >
+            <el-autocomplete v-model="searchValue" clearable class="inline-input min-w-[300px] border rounded-md">
               <template #prefix>
                 <img src="@/assets/icons/search.svg" />
               </template>
@@ -133,13 +107,8 @@ const currencyOptions = [
         </NuxtLink>
         <div class="nav-links flex-center flex-wrap">
           <ul class="flex-center flex-wrap gap-4 uppercase font-[400]">
-            <li
-              v-for="link in links"
-              :key="link.name"
-              :class="{ active: $route.path == link.path }"
-              @mouseenter="activeLink = link.name"
-              @mouseleave="activeLink = ''"
-            >
+            <li v-for="link in links" :key="link.name" :class="{ active: $route.path == link.path }"
+              @mouseenter="activeLink = link.name" @mouseleave="activeLink = ''">
               <NuxtLink :to="link.path">
                 {{ link.name }}
               </NuxtLink>
@@ -147,11 +116,7 @@ const currencyOptions = [
           </ul>
         </div>
 
-        <LinksList
-          @mouseenter="activeLink = 'home'"
-          @mouseleave="activeLink = ''"
-          :activeLink="activeLink !== ''"
-        />
+        <LinksList @mouseenter="activeLink = 'home'" @mouseleave="activeLink = ''" :activeLink="activeLink !== ''" />
       </div>
     </div>
   </header>
@@ -163,17 +128,19 @@ const currencyOptions = [
 }
 
 @media (max-width: 768px) {
-  .top-header {
-    justify-content: center;
+  .top-header>div {
+    justify-content: center !important;
   }
 }
 
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
+.el-menu--horizontal>.el-menu-item:nth-child(1) {
   margin-right: auto;
 }
+
 .nav-links li {
   cursor: pointer;
 }
+
 .nav-links li:hover.active {
   color: var(--primary);
 }

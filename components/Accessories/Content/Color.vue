@@ -7,19 +7,12 @@ const activeColor = ref<string>("Blue");
 <template>
   <!-- Accessories Filter -->
 
-  <div
-    class="accessories-filter min-h-full rounded-md min-w-[270px] max-w-[270px]"
-    style="background: #f6f7f8; padding: 20px"
-  >
+  <div class="accessories-filter min-h-full rounded-md min-w-[270px] max-w-[270px]"
+    style="background: #f6f7f8; padding: 20px">
     <h2 class="mb-6 text-[18px]">COLOR</h2>
-    <div class="flex-between mb-4 gap-4">
-      <div
-        class="parent flex-center cursor-pointer"
-        v-for="color in Colors"
-        :key="color"
-        :style="{ borderColor: activeColor == color ? color : 'transparent' }"
-        @click="activeColor = color"
-      >
+    <div class="flex-between mb-4 ">
+      <div class="parent flex-center cursor-pointer" v-for="color in Colors" :key="color"
+        :style="{ borderColor: activeColor == color ? color : 'transparent' }" @click="activeColor = color">
         <span class="child" :style="{ background: color }"></span>
       </div>
     </div>
@@ -33,6 +26,7 @@ button {
 }
 
 .parent {
+  aspect-ratio: 1/1;
   width: 30px;
   height: 30px;
   border-radius: 50%;

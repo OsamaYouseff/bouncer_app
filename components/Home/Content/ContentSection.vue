@@ -39,13 +39,8 @@ const filters = [
       <!-- filters -->
       <nav>
         <ul class="flex-center gap-14 font-[400] flex-wrap">
-          <li
-            v-for="filter in filters"
-            :key="filter.name"
-            :class="{ active: filter.value == filterValue }"
-            @click="filterValue = filter.value"
-            class="cursor-pointer border-b-4 border-transparent pb-1"
-          >
+          <li v-for="filter in filters" :key="filter.name" :class="{ active: filter.value == filterValue }"
+            @click="filterValue = filter.value" class="cursor-pointer border-b-4 border-transparent pb-1">
             {{ filter.name }}
           </li>
         </ul>
@@ -53,16 +48,13 @@ const filters = [
 
       <!-- products -->
       <div
-        class="product-container ml-5 flex md:justify-center md:flex-wrap overflow-scroll p-8 gap-10"
-      >
+        class="product-container lg:ml-3 ml-6 flex md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-10">
         <!-- product Box -->
         <Product v-for="product in 8" :key="product" :product="product" />
       </div>
     </div>
-    <button
-      class="more-btn text-center mt-10 border-b-2 px-0 mx-auto cursor-pointer"
-      style="color: var(--primary); border-color: var(--primary)"
-    >
+    <button class="more-btn text-center mt-10 border-b-2 px-0 mx-auto cursor-pointer"
+      style="color: var(--primary); border-color: var(--primary)">
       LOAD MORE
     </button>
   </section>
@@ -74,6 +66,7 @@ const filters = [
     margin-top: 400px;
   }
 }
+
 @media (max-width: 800px) {
   section {
     margin-top: 390px;

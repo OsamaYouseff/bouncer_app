@@ -52,11 +52,30 @@ button {
   align-items: center;
 }
 
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flex-col-center {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .flex-col-start {
   display: flex;
   justify-content: flex-start;
