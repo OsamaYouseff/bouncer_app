@@ -66,7 +66,7 @@
       <div
         class="section-box bg-[#c0c8ce] z-20 relative flex-between w-[375px] h-[280px]"
       >
-        <div class="bg-layer w-100 h-100 absolute">
+        <div class="bg-layer w-full h-full absolute">
           <div class="text z-30 pt-12 pl-8">
             <p class="mb-4">GoPro Hero 6</p>
             <p class="text-[10px] w-[140px] mb-2 leading-5">
