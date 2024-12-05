@@ -217,6 +217,7 @@ const Colors = ["Blue", "Red", "Green", "Black"];
 const activeColor = ref<string>("Black");
 
 const amount = ref(1);
+
 const handleChange = (value: number) => {
   amount.value = value;
 };
