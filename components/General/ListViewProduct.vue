@@ -12,6 +12,7 @@ const ratingValue = ref<number>(4.5);
 <template>
   <!-- product box -->
   <div
+    @click="navigateTo(`/product/${product}`)"
     class="product-box flex gap-4 cursor-pointer transition flex-wrap border-[#f6f7f8] border-b-2 min-w-full sm:min-w-full min-h-[330px] rounded py-5 text-center"
   >
     <div

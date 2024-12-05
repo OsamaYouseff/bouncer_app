@@ -1,11 +1,14 @@
 <template>
-  <section class="flex-between gap-4">
+  <section class="flex-between gap-8 xl:gap-4 flex-wrap xl:flex-nowrap">
     <!-- product details -->
-    <div class="product-box lg:min-w-[870px]">
+    <div class="product-box lg:min-w-[870px] max-w-full grow">
+      <!-- product -->
       <div
         class="product-box mb-10 flex-center gap-4 cursor-pointer transition flex-wrap border-[#f6f7f8] border-b-2 min-w-full sm:min-w-full w-[370px] min-h-[630px] rounded py-5 text-center"
       >
-        <div class="img-container relative lg:grow-0 grow">
+        <div
+          class="img-container relative lg:grow-0 grow flex-col-center items-center"
+        >
           <img
             class="mb-4 h-[370px] w-[370px]"
             :src="activeImage"
@@ -105,7 +108,7 @@
 
           <!-- Amount & action btns -->
           <div
-            class="amount-action flex-between py-4 border-[#f6f7f8] border-b-2"
+            class="amount-action flex-between py-4 border-[#f6f7f8] border-b-2 gap-3"
           >
             <div class="amount">
               <el-input-number
@@ -118,7 +121,7 @@
             </div>
             <div class="action-btns flex gap-4">
               <button
-                class="add-to-cart border-0 text-[14px] max-h-[46px] flex gap-3 py-4 px-6 rounded-md transition bg-[#ebf6ff] hover:bg-blue-100"
+                class="add-to-cart border-0 text-[12px] max-h-[46px] flex gap-3 py-4 px-4 lg:px-6 rounded-md transition bg-[#ebf6ff] hover:bg-blue-100"
                 style="color: var(--primary)"
               >
                 <img src="@/assets/icons/cart_2.svg" alt="cart-icon" />
@@ -136,13 +139,13 @@
           <!-- Social media -->
           <div class="social-media py-4 flex gap-4">
             <button
-              class="flex-center bg-[#385c8e] gap-4 text-white py-4 px-6 rounded-md w-[230px] h-[46px]"
+              class="flex-center max-w-full bg-[#385c8e] gap-4 text-white py-4 px-6 rounded-md lg:w-[230px] h-[46px] text-sm lg:text-[16px]"
             >
               <img src="@/assets/icons/facebook2.svg" alt="facebook-icon" />
               <span>Share on Facebook </span>
             </button>
             <button
-              class="flex-center bg-[#06a8f4] gap-4 text-white py-4 px-6 rounded-md w-[230px] h-[46px]"
+              class="flex-center max-w-full bg-[#06a8f4] gap-4 text-white py-4 px-6 rounded-md lg:w-[230px] h-[46px] text-sm lg:text-[16px]"
             >
               <img src="@/assets/icons/twitter2.svg" alt="twitter-icon" />
               <span>Share on Twitter </span>
@@ -150,6 +153,7 @@
           </div>
         </div>
       </div>
+      <!-- description -->
       <div class="des">
         <el-tabs
           v-model="activeName"
@@ -210,7 +214,7 @@ const activeImage = ref(mainImg);
 const ratingValue = ref<number>(4);
 
 const Colors = ["Blue", "Red", "Green", "Black"];
-const activeColor = ref<string>("Blue");
+const activeColor = ref<string>("Black");
 
 const amount = ref(1);
 const handleChange = (value: number) => {

@@ -12,7 +12,7 @@ const ratingValue = ref<number>(4);
   <!-- product Box -->
   <div
     @click="navigateTo(`/product/${product}`)"
-    class="product-box relative cursor-pointer transition border-gray-300 border min-w-[270px] h-[349px] rounded flex-col-center px-5 text-center"
+    class="product-box relative cursor-pointer transition border-gray-300 border max-w-[270px] min-w-[270px] h-[349px] rounded flex-col-center px-5 text-center"
   >
     <!-- hot -->
     <div
