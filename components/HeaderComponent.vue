@@ -77,15 +77,17 @@ const currencyOptions = [
 
         <nav class="flex items-center gap-4 flex-wrap justify-center">
           <ul class="flex-center gap-8 fw-bold">
-            <li class="flex-center gap-2 min-w-[100px]">
-              <img src="@/assets/icons/profile.svg" alt="profile-icon" />
-              <p class="text-sm">My Profile</p>
+            <li class=" min-w-[100px]">
+              <nuxt-link class="flex-center gap-2" to="/profile">
+                <img src="@/assets/icons/profile.svg" alt="profile-icon" />
+                <p class="text-sm">My Profile</p>
+              </nuxt-link>
             </li>
             <li class="flex-between gap-4">
-              <div class="flex-center gap-2 min-w-[100px]">
+              <nuxt-link class="flex-center gap-2 min-w-[100px]" to="/cart">
                 <img src="@/assets/icons/cart.svg" alt="cart-icon" />
                 <p class="text-sm">{{ 0 }} Items</p>
-              </div>
+              </nuxt-link>
               <p class="text-sm" style="color: var(--gray)">$0.00</p>
             </li>
           </ul>
