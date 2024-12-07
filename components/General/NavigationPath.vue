@@ -1,15 +1,10 @@
 <template>
   <div class="nav-path mb-10 text-black flex-center gap-3 ">
-    <NuxtLink to="/home" class="active cursor-pointer  text-[11px] lg:text-[14px] text-[#c0c8ce]">Home</NuxtLink>
-    <span>/</span>
-    <NuxtLink to="/accessories" class="active cursor-pointer  text-[11px] lg:text-[14px] text-[#c0c8ce]">Accessories
-    </NuxtLink>
-    <span>/</span>
-    <NuxtLink class="text-[11px] lg:text-[14px] text-[#c0c8ce]">Beat Solo2 Ear Headphones - black</NuxtLink>
+    <slot />
   </div>
 </template>
 
-<style scoped>
+<style>
 .nav-path {
   background: #fafbfb;
   padding: 10px;

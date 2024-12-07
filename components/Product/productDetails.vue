@@ -6,8 +6,8 @@
       <div
         class="product-box mb-10 flex-center gap-4 transition flex-wrap border-[#f6f7f8] border-b-2 min-w-full sm:min-w-full w-[370px] min-h-[630px] rounded py-5 text-center">
         <div class="img-container relative lg:grow-0 grow flex-col-center items-center">
-          <img class="mb-4 h-[370px] w-[370px]" :src="activeImage" alt="macbook-img" />
-          <div class="sub-images flex-center">
+          <img class="mb-4 h-[370px] w-[370px] " :src="activeImage" alt="macbook-img" />
+          <div class="sub-images flex-center cursor-pointer">
             <img @click="activeImage = item" v-for="item in subImages" :class="activeImage == item ? 'active' : ''"
               :src="`${item}`" alt="product-img" />
           </div>
@@ -186,7 +186,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 };
 
 watchEffect(() => {
-  console.log(activeImage.value);
+  // console.log(activeImage.value);
 });
 </script>
 

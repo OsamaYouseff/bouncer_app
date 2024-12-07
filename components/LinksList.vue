@@ -23,57 +23,28 @@ watchEffect(() => {
         <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
         <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> AirPort & Wireless </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> AppleCare </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Bags, Shells & Sleeves </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Business & Security </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Cables & Docks </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Cameras & Video </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Car & Travel </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
-        <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Cases & Films </NuxtLink>
           </li>
         </ul>
       </div>
@@ -81,13 +52,39 @@ watchEffect(() => {
         <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
         <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Charging Devices </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Connected Home </NuxtLink>
           </li>
           <li>
-            <NuxtLink> AirPods & wireless </NuxtLink>
+            <NuxtLink> Device Care </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> Display & Graphic </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> Fitness & Sport </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> Headphones </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> HealthKit </NuxtLink>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
+        <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
+          <li>
+            <NuxtLink> Mice & Keyboards </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> Music Creation </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink> Networking & Server </NuxtLink>
           </li>
         </ul>
       </div>
@@ -110,12 +107,12 @@ watchEffect(() => {
 .sections>div {
   flex-grow: 1;
   height: 100%;
-  min-height: 300px;
+  min-height: 200px;
   min-width: 250px;
 }
 
 ul {
-  max-height: 300px;
+  max-height: 200px;
 }
 
 ul li {

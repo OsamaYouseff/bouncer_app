@@ -1,6 +1,14 @@
 <template>
   <section class="product-section container mx-auto pb-10">
-    <NavigationPath />
+    <NavigationPath>
+      <NuxtLink to="/home" class="active cursor-pointer  text-[11px] lg:text-[14px] text-[#c0c8ce]">Home</NuxtLink>
+      <span>/</span>
+      <NuxtLink to="/accessories" class="active cursor-pointer  text-[11px] lg:text-[14px] text-[#c0c8ce]">
+        Accessories
+      </NuxtLink>
+      <span>/</span>
+      <NuxtLink class="text-[11px] lg:text-[14px] text-[#c0c8ce]">Beat Solo2 Ear Headphones - black</NuxtLink>
+    </NavigationPath>
     <ProductDetails />
 
     <!-- Related Products -->

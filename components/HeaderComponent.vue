@@ -63,8 +63,8 @@ const currencyOptions = [
         <div class="lang-currency flex items-center justify-center">
           <div class="lang">
             <el-select v-model="langValue" placeholder="Select" size="default" style="width: 65px">
-              <el-option style="box-shadow: none !important" v-for="item in langOptions" :key="item.value"
-                :label="item.label" :value="item.value" />
+              <el-option class="option" v-for="item in langOptions" :key="item.value" :label="item.label"
+                :value="item.value" active style="box-shadow: none !important" />
             </el-select>
           </div>
           <div class="currency">
@@ -104,7 +104,7 @@ const currencyOptions = [
 
       <!-- bottom header -->
       <div class="bottom-header pb-8 relative">
-        <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4 max-w-[200px] mx-auto">
+        <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4 max-w-[300px] mx-auto">
           <img src="@/assets/icons/logo2.svg" alt="logo-icon" />
         </NuxtLink>
         <div class="nav-links flex-center flex-wrap">
