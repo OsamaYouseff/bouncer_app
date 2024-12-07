@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, watchEffect } from "vue";
 import Product from "@/components/Home/Content/Product.vue";
 import Price from "./Content/Price.vue";
 import Color from "./Content/Color.vue";
@@ -6,12 +7,11 @@ import Brand from "./Content/Brand.vue";
 import FilterBar from "./Content/FilterBar.vue";
 import Banner from "../Home/Banner.vue";
 import AccessoriesFilter from "./Content/AccessoriesFilter.vue";
-
 import ListViewProduct from "../General/ListViewProduct.vue";
-import Drawer from "./Drawer.vue";
+import Drawer from "../General/Drawer.vue";
+import PaginationBar from "@/components/General/PaginationBar.vue";
 
-const activePage = ref<number>(3);
-const activeView = ref<string>("list");
+const activeView = ref<string>("grid");
 
 
 const changeActiveView = (newView: string) => {
@@ -29,7 +29,21 @@ watchEffect(() => {
 <template>
   <div class="container relative mx-auto flex-between gap-12 " style="align-items: flex-start">
 
-    <Drawer />
+    <Drawer :drawerBtnTitle="'Filter'">
+      <div class="grow flex-col-center gap-4 items-center">
+        <AccessoriesFilter />
+        <Price />
+        <Color />
+        <Brand />
+
+        <!-- More btn -->
+        <button class="brand-filter min-h-full rounded-md min-w-[270px] max-w-[270px] cursor-pointer"
+          style="background: #f6f7f8; padding: 20px">
+          MORE
+        </button>
+      </div>
+
+    </Drawer>
 
     <div class=" filter-wrapper hidden lg:flex flex-col-center gap-6">
       <AccessoriesFilter />
@@ -59,12 +73,7 @@ watchEffect(() => {
       </div>
 
       <!-- Pagination -->
-      <button class="brand-filter min-h-full rounded-md mb-8 flex-center gap-4" style="background: #f6f7f8">
-        <button v-for="page in 5" @click="activePage = page" :class="activePage == page ? 'active' : ''"
-          class="page-button">
-          {{ page }}
-        </button>
-      </button>
+      <PaginationBar />
     </div>
   </div>
 </template>
@@ -82,22 +91,8 @@ watchEffect(() => {
   height: 400px;
 }
 
-.page-button {
-  width: 56px;
-  height: 56px;
-  border: none;
-  cursor: pointer;
-  color: #22262a;
-}
-
-.page-button.active {
-  color: white;
-
-  background: #22262a;
-}
-
 @media (max-width: 768px) {
-  .filter-drawer {
+  .drawer {
     display: block !important;
   }
 

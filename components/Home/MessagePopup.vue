@@ -42,7 +42,7 @@ const centerDialogVisible = ref(false);
 onMounted(() => {
   setTimeout(() => {
     centerDialogVisible.value = true;
-  }, 0);
+  }, 5000);
 });
 </script>
 

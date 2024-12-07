@@ -86,7 +86,7 @@ const currencyOptions = [
             <li class="flex-between gap-4">
               <nuxt-link class="flex-center gap-2 min-w-[100px]" to="/cart">
                 <img src="@/assets/icons/cart.svg" alt="cart-icon" />
-                <p class="text-sm">{{ 0 }} Items</p>
+                <p class="text-sm">{{ 3 }} Items</p>
               </nuxt-link>
               <p class="text-sm" style="color: var(--gray)">$0.00</p>
             </li>
@@ -104,7 +104,7 @@ const currencyOptions = [
 
       <!-- bottom header -->
       <div class="bottom-header pb-8 relative">
-        <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4">
+        <NuxtLink to="/" class="img-container flex-center lg:mb-10 mb-4 max-w-[200px] mx-auto">
           <img src="@/assets/icons/logo2.svg" alt="logo-icon" />
         </NuxtLink>
         <div class="nav-links flex-center flex-wrap">
