@@ -13,10 +13,9 @@ const props = defineProps({
 
 
 const productsCount = ref<number>(8);
+const emit = defineEmits(["update:viewOption", "update:itemsLimit"]);
 
 
-
-const emit = defineEmits(["update:viewOption"]);
 </script>
 
 <template>
@@ -29,9 +28,10 @@ const emit = defineEmits(["update:viewOption"]);
       <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" index="1" style="width: 116px">
         <el-sub-menu class="grow">
           <template #title>{{ productsCount }}</template>
-          <el-menu-item @click="productsCount = n * 4" v-for="n in 4" :index="1 - n" :key="n">{{
-            n * 4
-          }}</el-menu-item>
+          <el-menu-item @click="emit('update:itemsLimit', productsCount = n * 4)" v-for="n in 4" :index="1 - n"
+            :key="n">{{
+              n * 4
+            }}</el-menu-item>
         </el-sub-menu>
       </el-menu>
     </div>

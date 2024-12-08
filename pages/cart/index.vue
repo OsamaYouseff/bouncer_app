@@ -23,7 +23,7 @@
       </div>
     </div>
     <!-- Cart Checkout -->
-    <div class="checkout flex-between py-10 mb-20 gap-2 sm:gap-10">
+    <div class="checkout flex-between py-10 mb-20 md:gap-2 gap-10">
       <div class="redeem-code flex-center px-2 sm:max-w-full max-w-[360px]">
         <input type="text"
           class="input sm:mx-1 md:min-w-[249px] sm:min-w-[280px] h-[60px] sm:w-[200px] w-[249px] py-3 px-4 border-[1px] border-[#f6f7f8] rounded-[5px]"

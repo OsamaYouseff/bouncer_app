@@ -13,8 +13,8 @@ const links = [
     path: "/home",
   },
   {
-    name: "store",
-    path: "/store",
+    name: "blog",
+    path: "/blog",
   },
   {
     name: "iphone",

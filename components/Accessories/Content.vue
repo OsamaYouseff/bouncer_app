@@ -25,6 +25,13 @@ const activeView = ref<string>("grid");
 const changeActiveView = (newView: string) => {
   activeView.value = newView;
 }
+const handleUpdateLimit = (limit: number) => {
+
+  console.log(limit)
+
+  productsStore.getProducts(limit);
+}
+
 
 watchEffect(() => {
   // console.log(activeView)
@@ -71,10 +78,8 @@ onMounted(() => {
 
     <div class="flex-col-center gap-5 overflow-hidden">
       <Banner :maxHeight:="'340px'" />
-      <FilterBar @update:viewOption="changeActiveView" :activeView="activeView" />
-
-
-
+      <FilterBar @update:viewOption="changeActiveView" :activeView="activeView"
+        @update:itemsLimit="handleUpdateLimit" />
       <LoaderComponent v-if="isLoading" />
       <!-- Products -->
       <div v-else>
