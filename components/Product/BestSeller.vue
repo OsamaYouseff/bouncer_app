@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import Product from "../Home/Content/Product.vue";
+
+const props = defineProps({
+  topProducts: {
+    type: Array,
+  },
+})
+
+
 </script>
 
 <template>
@@ -10,7 +18,7 @@ import Product from "../Home/Content/Product.vue";
         Best Sellers
       </p>
       <el-carousel trigger="click" pause-on-hover class="carousel rounded-md min-h-[385px]">
-        <el-carousel-item v-for="product in 4" :key="product + 100">
+        <el-carousel-item v-for="product in topProducts" :key="product.id">
           <Product :product="product" />
         </el-carousel-item>
       </el-carousel>

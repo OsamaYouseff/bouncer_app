@@ -1,27 +1,30 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+
+
 const props = defineProps({
   product: {
-    type: Number,
-    default: 1,
+    type: Object,
   },
 });
 
-const ratingValue = ref<number>(4.5);
+const ratingValue = ref<number>(props.product.price % 5.5);
 </script>
 
 <template>
   <!-- product box -->
-  <div @click="navigateTo(`/product/${product}`)"
+  <div @click="navigateTo(`/product/${product.id}`)"
     class="product-box flex gap-4 cursor-pointer transition flex-wrap border-[#f6f7f8] border-b-2 min-w-full sm:min-w-full min-h-[330px] rounded py-5 text-center">
     <!-- image Container -->
-    <div class="img-container relative flex-center h-[270px] w-[270px] 2xl:grow-0 grow border-[#f6f7f8] border-4">
-      <img class="mb-8" src="@/assets/images/laptop.png" alt="macbook-img" />
+    <div
+      class="mb-8 img-container relative flex-center rounded-md h-[270px] w-[270px] 2xl:grow-0 grow border-[#f6f7f8] border-4">
+      <img class="rounded-md" :src="props.product.images[0]" alt="macbook-img" style="max-height: 270px;" />
     </div>
 
     <!-- Product Content -->
     <div class="content grow px-6">
       <h2 class="title mb-6 md:text-xl font-medium text-start">
-        Beat Solo2 Ear Headphones - black
+        {{ props.product.title }}
       </h2>
       <div class="rating-wrapper flex gap-2 pb-2 border-b mb-2">
         <el-rate disabled allow-half v-model="ratingValue" size="small" />
@@ -31,14 +34,12 @@ const ratingValue = ref<number>(4.5);
         </button>
       </div>
       <div class="price flex gap-2">
-        <p class="curr text-[#ea4251] text-[24px]">$499</p>
-        <p class="prev text-[#c0c8ce] text-[24px] line-through">$599</p>
+        <p class="curr text-[#ea4251] text-[24px]">${{ props.product.price }}</p>
+        <p class="prev text-[#c0c8ce] text-[24px] line-through">${{ props.product.price + 100 }}</p>
       </div>
 
       <p class="dic text-start md:max-w-[570px] max-w-[370px] text-[14px] leading-7 mb-4">
-        Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et
-        mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend
-        laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor
+        {{ props.product.description.slice(0, 229) }}
         ...
       </p>
 

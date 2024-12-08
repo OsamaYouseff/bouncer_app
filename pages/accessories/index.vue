@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-[200px]">
+  <section class="mb-[200px] ">
     <NavigationPath>
       <NuxtLink to="/home" class="active cursor-pointer  text-[11px] lg:text-[14px] text-[#c0c8ce]">Home</NuxtLink>
       <span>/</span>

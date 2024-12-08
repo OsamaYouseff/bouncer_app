@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-path mb-10 text-black flex-center gap-3 ">
+  <div class="nav-path  text-black flex-center gap-3 ">
     <slot />
   </div>
 </template>

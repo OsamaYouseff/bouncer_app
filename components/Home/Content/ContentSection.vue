@@ -1,6 +1,18 @@
 <script setup lang="ts">
-import type { toDisplayString } from "vue";
+import { onMounted, ref, watch } from "vue";
+
 import Product from "./Product.vue";
+
+// pinia store
+import { storeToRefs } from "pinia";
+import { useProductsStore } from "@/composables/useProducts";
+
+const productsStore = useProductsStore();
+const { products, isLoading } = storeToRefs(productsStore);
+
+const productsLimit = ref<number>(8);
+
+
 
 const filterValue = ref<string>("All");
 
@@ -30,10 +42,21 @@ const filters = [
     value: "Accessories",
   },
 ];
+
+
+
+onMounted(() => {
+  productsStore.getProducts(productsLimit.value);
+})
+
+watch(productsLimit, () => {
+  productsStore.getProducts(productsLimit.value);
+})
+
 </script>
 
 <template>
-  <section class="flex-col-center py-20">
+  <section class="flex-col-center py-20" id="best-seller">
     <div class="container mx-auto">
       <h1 class="text-center mb-6 text-[30px]">BEST SELLER</h1>
       <!-- filters -->
@@ -46,17 +69,21 @@ const filters = [
         </ul>
       </nav>
 
+      <LoaderComponent v-if="isLoading" />
       <!-- products -->
-      <div
+      <div v-else
         class="product-container lg:ml-3 ml-6 flex md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-10">
         <!-- product Box -->
-        <Product v-for="product in 8" :key="product" :product="product" />
+        <Product v-for="product in products" :key="product.id" :product="product" />
       </div>
     </div>
-    <button class="more-btn text-center mt-10 border-b-2 px-0 mx-auto cursor-pointer"
-      style="color: var(--primary); border-color: var(--primary)">
+
+    <button @click="productsLimit += 4" class="mt-10 border-b-2 pb-3 px-0 mx-auto cursor-pointer h-10"
+      style="color: var(--primary); border-color: var(--primary);">
       LOAD MORE
     </button>
+
+
   </section>
 </template>
 

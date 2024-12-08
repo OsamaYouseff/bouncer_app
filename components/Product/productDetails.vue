@@ -6,7 +6,7 @@
       <div
         class="product-box mb-10 flex-center gap-4 transition flex-wrap border-[#f6f7f8] border-b-2 min-w-full sm:min-w-full w-[370px] min-h-[630px] rounded py-5 text-center">
         <div class="img-container relative lg:grow-0 grow flex-col-center items-center">
-          <img class="mb-4 h-[370px] w-[370px] " :src="activeImage" alt="macbook-img" />
+          <img class="mb-4 h-[370px] w-[370px] rounded-md " :src="activeImage" alt="macbook-img" />
           <div class="sub-images flex-center cursor-pointer">
             <img @click="activeImage = item" v-for="item in subImages" :class="activeImage == item ? 'active' : ''"
               :src="`${item}`" alt="product-img" />
@@ -14,7 +14,7 @@
         </div>
         <div class="content grow px-6">
           <h2 class="title mb-6 md:text-xl font-medium text-start">
-            Beat Solo2 Ear Headphones - black
+            {{ props.product?.title }}
           </h2>
           <!-- rating -->
           <div class="rating-wrapper flex gap-2 pb-2 border-b mb-4">
@@ -39,7 +39,7 @@
             </div>
             <div class="category flex-between max-w-[250px]">
               <h3 class="font-medium">category</h3>
-              <span>Accessories</span>
+              <span>{{ props.product?.category?.name }}</span>
             </div>
             <div class="shipping flex-between max-w-[250px]">
               <h3 class="font-medium">shipping</h3>
@@ -120,17 +120,7 @@
         <el-tabs v-model="activeName" class="demo-tabs bg-[#fafafb] rounded p-3" @tab-click="handleClick">
           <el-tab-pane class="p-5" label="Product Information" name="product-info">
             <p class="text-[14px] mb-6 leading-7">
-              Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida
-              et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-              adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada
-              tincidunt. Class aptent taciti sociosqu ad litora torquent per
-              conubia nostra, per inceptos himenaeos. Integer enim purus,
-              posuere at ultricies eu, placerat a felis. Suspendisse aliquet
-              urna pretium eros convallis interdum. Quisque in arcu id dui
-              vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel
-              tellus non nunc mattis lobortis.
+              {{ props.product?.description.slice(0, 814) }}.
             </p>
             <p class="text-[14px] mb-6 leading-7">
               Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida
@@ -153,19 +143,33 @@
       </div>
     </div>
 
-    <BestSeller class="xl:max-w-[269px]" />
+    <BestSeller class="xl:max-w-[269px]" :topProducts="topProducts" />
   </section>
 </template>
 
 <script lang="ts" setup>
+import { ref, watch } from "vue";
+
+
+const props = defineProps({
+  product: {
+    type: Object,
+  },
+  topProducts: {
+    type: Array
+  }
+})
+
+// console.log(props.product)
+
 import mainImg from "@/assets/images/main-img.jpg";
 import subImg1 from "@/assets/images/sub-img-1.jpg";
 import subImg2 from "@/assets/images/sub-img-2.jpg";
 import subImg4 from "@/assets/images/sub-img-4.jpg";
 
-const subImages = ref([subImg1, subImg2, mainImg, subImg4]);
-const activeImage = ref(mainImg);
-const ratingValue = ref<number>(4);
+const subImages = ref(props.product?.images ?? [mainImg, subImg1, subImg2, subImg4]);
+const activeImage = ref(props.product?.images[0] ?? mainImg);
+const ratingValue = ref<number>(props.product?.price % 5.5);
 
 const Colors = ["Blue", "Red", "Green", "Black"];
 const activeColor = ref<string>("Black");
@@ -178,6 +182,7 @@ const handleChange = (value: number) => {
 
 import type { TabsPaneContext } from "element-plus";
 import BestSeller from "./BestSeller.vue";
+import { ref } from "vue";
 
 const activeName = ref("product-info");
 
@@ -185,9 +190,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   // console.log(tab, event);
 };
 
-watchEffect(() => {
-  // console.log(activeImage.value);
-});
+
 </script>
 
 <style scoped>
@@ -218,6 +221,7 @@ watchEffect(() => {
 .product-status span {
   min-width: 100px;
   text-align: start;
+  font-size: 15px;
 }
 
 .parent {
@@ -257,5 +261,10 @@ watchEffect(() => {
 .el-tabs__nav>div {
   padding: 40px 20px;
   background: #000;
+}
+
+.social-media span,
+.action-btns span {
+  font-size: 14px;
 }
 </style>
