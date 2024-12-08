@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 //// states
 const langValue = ref<string>("EN");
@@ -53,6 +53,28 @@ const currencyOptions = [
     label: "EGP",
   },
 ];
+
+// pinia store
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/composables/useCart";
+
+const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
+
+const cartItemsNumber = ref<number>(cart.value.cartItemsNum || 0);
+
+onMounted(() => {
+  cartStore.getCart();
+});
+
+watch(
+  () => cart.value,
+  (newCart) => {
+    cartItemsNumber.value = newCart.cartItemsNum;
+  }
+);
+
+
 </script>
 
 <template>
@@ -61,16 +83,16 @@ const currencyOptions = [
     <div class="top-header mt-1">
       <div class="container mx-auto flex items-center justify-between lg:mb-10 mb-4 flex-wrap gap-3">
         <div class="lang-currency flex items-center justify-center">
-          <div class="lang">
-            <el-select v-model="langValue" placeholder="Select" size="default" style="width: 65px">
-              <el-option class="option" v-for="item in langOptions" :key="item.value" :label="item.label"
-                :value="item.value" active style="box-shadow: none !important" />
+          <div class="lang " ">
+            <el-select  v-model="langValue" placeholder="Select" size="default" style="width: 65px">
+            <el-option class="option" v-for="item in langOptions" :key="item.value" :label="item.label"
+              :value="item.value" active style="box-shadow: none !important; font-size: 20px;" />
             </el-select>
           </div>
           <div class="currency">
             <el-select v-model="currValue" placeholder="Select" size="default" style="width: 75px">
-              <el-option style="box-shadow: none !important" v-for="item in currencyOptions" :key="item.value"
-                :label="item.label" :value="item.value" />
+              <el-option class="option" style="box-shadow: none !important" v-for="item in currencyOptions"
+                :key="item.value" :label="item.label" :value="item.value" />
             </el-select>
           </div>
         </div>
@@ -86,7 +108,7 @@ const currencyOptions = [
             <li class="flex-between gap-4">
               <nuxt-link class="flex-center gap-2 min-w-[100px]" to="/cart">
                 <img src="@/assets/icons/cart.svg" alt="cart-icon" />
-                <p class="text-sm">{{ 3 }} Items</p>
+                <p class="text-sm">{{ cartItemsNumber }} Items</p>
               </nuxt-link>
               <p class="text-sm" style="color: var(--gray)">$0.00</p>
             </li>

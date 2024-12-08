@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { ElNotification } from 'element-plus'
+
+// pinia store
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/composables/useCart";
 
 const props = defineProps({
   product: {
@@ -7,7 +12,26 @@ const props = defineProps({
   },
 });
 
+
+const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
+
 const ratingValue = ref<number>(props.product.price % 5.5);
+
+const addToCart = (event: Event, product: any) => {
+  event.stopPropagation();
+  cartStore.addToCart(product);
+  openMessage()
+};
+
+
+const openMessage = () => {
+  ElNotification({
+    title: 'Success',
+    message: 'Product added to cart successfully',
+    type: 'success',
+  })
+}
 
 </script>
 <template>
@@ -22,10 +46,10 @@ const ratingValue = ref<number>(props.product.price % 5.5);
     </div>
 
     <!-- Action Box -->
-    <div
+    <div @click.prevent=""
       class="action w-full h-[270px] absolute top-0 left-1/2 transform -translate-x-1/2 flex-center gap-2 bg-[#ffffff9e]">
       <img src="@/assets/icons/fav.svg" alt="sale-img" />
-      <img src="@/assets/icons/cart2.svg" alt="new-img" />
+      <img @click="addToCart($event, product)" src="@/assets/icons/cart2.svg" alt="new-img" />
     </div>
 
     <img class="mb-8 mt-1 rounded-md" :src="props.product.images[0]" alt="macbook-img" />

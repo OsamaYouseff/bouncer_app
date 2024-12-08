@@ -23,7 +23,7 @@ const fetchDataFromLocalStorage = (): Cart => {
 
 export const useCartStore = defineStore("cart", () => {
   const cart = ref<Cart>({ products: [], cartTotalPrice: 0, cartItemsNum: 0 });
-  const isLoading = ref<boolean>(false);
+  const isLoading = ref<boolean>(true);
 
   const getCart = (): void => {
     isLoading.value = true;

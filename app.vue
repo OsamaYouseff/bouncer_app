@@ -100,10 +100,25 @@ button.el-dialog__headerbtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 24px;
   transform: translate(15px, -15px);
   color: white;
+  transition: all 0.2s ease-in;
 }
+
+button.el-dialog__headerbtn i {
+  color: white !important;
+}
+
+button.el-dialog__headerbtn:hover {
+  background-color: #e91e63 !important;
+}
+
+.el-select__selected-item.el-select__placeholder span,
+.option {
+  font-size: 14px !important;
+}
+
 
 @media (max-width: 768px) {
   button.el-dialog__headerbtn {

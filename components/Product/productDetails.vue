@@ -85,7 +85,7 @@
                 style="max-width: 116px; background: #f6f7f8" />
             </div>
             <div class="action-btns flex gap-4">
-              <button
+              <button @click="addToCart"
                 class="add-to-cart border-0 text-[12px] max-h-[46px] flex gap-3 py-4 px-4 lg:px-6 rounded-md transition bg-[#ebf6ff] hover:bg-blue-100"
                 style="color: var(--primary)">
                 <img src="@/assets/icons/cart_2.svg" alt="cart-icon" />
@@ -149,7 +149,11 @@
 
 <script lang="ts" setup>
 import { ref, watch } from "vue";
-
+import type { TabsPaneContext } from "element-plus";
+import BestSeller from "./BestSeller.vue";
+// pinia store
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/composables/useCart";
 
 const props = defineProps({
   product: {
@@ -160,7 +164,6 @@ const props = defineProps({
   }
 })
 
-// console.log(props.product)
 
 import mainImg from "@/assets/images/main-img.jpg";
 import subImg1 from "@/assets/images/sub-img-1.jpg";
@@ -176,13 +179,27 @@ const activeColor = ref<string>("Black");
 
 const amount = ref(1);
 
+const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
+
+
+
+// handlers
+const openMessage = () => {
+  ElNotification({
+    title: 'Success',
+    message: 'Product added to cart successfully',
+    type: 'success',
+  })
+}
+
+const addToCart = () => {
+  cartStore.addToCart(props.product, amount.value);
+  openMessage();
+};
 const handleChange = (value: number) => {
   amount.value = value;
 };
-
-import type { TabsPaneContext } from "element-plus";
-import BestSeller from "./BestSeller.vue";
-import { ref } from "vue";
 
 const activeName = ref("product-info");
 

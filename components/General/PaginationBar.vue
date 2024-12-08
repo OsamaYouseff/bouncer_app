@@ -1,6 +1,5 @@
 <template>
     <div class="pagination-wrapper mx-auto w-full flex-center">
-
         <!-- Pagination -->
         <button class=" page-button" v-for="(page, index) in 5" @click="activePage = page"
             :class="activePage == page ? 'active' : ''" :key="index">
@@ -13,7 +12,7 @@
 
 import { ref } from "vue";
 
-const activePage = ref<number>(3);
+const activePage = ref<number>(1);
 
 
 </script>

@@ -18,8 +18,6 @@ import { useProductsStore } from "@/composables/useProducts";
 const productsStore = useProductsStore();
 const { products, isLoading } = storeToRefs(productsStore);
 
-
-
 // states
 const activeView = ref<string>("grid");
 
@@ -28,7 +26,6 @@ const changeActiveView = (newView: string) => {
   activeView.value = newView;
 }
 
-
 watchEffect(() => {
   // console.log(activeView)
 })
@@ -36,7 +33,6 @@ watchEffect(() => {
 
 onMounted(() => {
   productsStore.getProducts(8);
-
 })
 
 

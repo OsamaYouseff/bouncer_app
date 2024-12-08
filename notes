@@ -1,3 +1,9 @@
 1 - fix shadow attribute problem --- remove it from global styles.
 
 2 - don't forget to swipe template with script after finishing the project
+
+3 - fix problem when you click on product cart don't go to it's details when you click on add to fav or buy (done) ( use event.stopPropagation() )
+
+4 - finish pagination logic in accessories page 
+
+4 - finish pagination logic in accessories page 

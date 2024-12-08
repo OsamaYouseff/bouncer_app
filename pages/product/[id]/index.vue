@@ -12,9 +12,8 @@
 
     <LoaderComponent v-if="isLoading" />
 
-
     <div v-else>
-      <ProductDetails :product="product" :topProducts="products.filter((p) => p.id != product.id).slice(0, 4)" />
+      <ProductDetails :product="product" :topProducts="products.filter((p) => p.id != product?.id).slice(0, 4)" />
 
       <!-- Related Products -->
       <div class="related-product-wrapper mt-10">
@@ -23,7 +22,7 @@
         </h2>
         <div
           class="related-products lg:ml-0 ml-2 flex-between md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-3">
-          <Product v-for="product in products.filter((p) => p.id != product.id).slice(0, 5)" :key="product.id"
+          <Product v-for="product in products.filter((p) => p.id != product?.id).slice(0, 5)" :key="product.id"
             :product="product" />
         </div>
       </div>
@@ -43,16 +42,15 @@ import { useRouter } from "vue-router";
 
 const productsStore = useProductsStore();
 const { product, products, isLoading } = storeToRefs(productsStore);
-
+const slicedProduct = products.value.slice(0, 5);
 
 
 // handlers 
 
 
-onMounted(() => {
-  productsStore.getAProduct(useRoute().params.id);
-  productsStore.getProducts(6);
-
+onMounted(async () => {
+  await productsStore.getAProduct(useRoute().params.id);
+  await productsStore.getProducts(6);
 })
 
 

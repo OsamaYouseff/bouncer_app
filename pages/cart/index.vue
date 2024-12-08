@@ -1,8 +1,9 @@
 <template>
-  <section class="container mx-auto overflow-x-hidden ">
+  <LoaderComponent v-if="isLoading" />
+  <section v-else class="container mx-auto overflow-x-hidden ">
     <h1 class="text-center mb-10 text-[30px] font-medium">CART</h1>
-
     <div class="table-wrapper overflow-x-auto">
+
       <!-- Cart Table -->
       <div class="table w-full mb-10 min-w-[1024px]">
         <div class="table-header-group ">
@@ -13,12 +14,14 @@
             <div class="unit-price table-cell min-w-[120px] font-medium text-xl pb-5">UNIT PRICE</div>
           </div>
         </div>
-
-        <CartProduct class="" v-for="product in cartProducts" :key="product.id" :product="product" />
-
+        <CartProduct v-for="product in cartInfo.value?.products" :key="product.id" :product="product" />
+      </div>
+      <div v-if="!cartInfo.value?.products.length">
+        <div class="flex-center w-full min-h-[400px] grow">
+          <p class="text-center text-[20px] font-medium text-[#475669]">Your cart is empty</p>
+        </div>
       </div>
     </div>
-
     <!-- Cart Checkout -->
     <div class="checkout flex-between py-10 mb-20 gap-2 sm:gap-10">
       <div class="redeem-code flex-center px-2 sm:max-w-full max-w-[360px]">
@@ -37,24 +40,25 @@
         <div class="details mb-3 border-b border-[#f6f7f8] pb-3">
           <div class="subtotal flex-between mb-5">
             <h3>Subtotal</h3>
-            <span>$1,999</span>
+            <span>${{ priceInfo.subtotal }}</span>
           </div>
           <div class="shipping flex-between mb-5">
             <h3>Shipping Fee</h3>
-            <span>$20</span>
+            <span>${{ priceInfo.deliveryFee }}</span>
           </div>
           <div class="coupon flex-between mb-5">
             <h3>Coupon</h3>
-            <span>No</span>
+            <span>- ${{ priceInfo.discount.toFixed(2) }}</span>
           </div>
         </div>
 
         <div class="total-price flex-between py-4 text-3xl mb-3 font-medium">
           <h3>TOTAL</h3>
-          <span>$1,979</span>
+          <span>${{ (priceInfo.subtotal + priceInfo.deliveryFee - priceInfo.discount).toFixed(2) }}</span>
         </div>
 
-        <button class="w-full border-none text-md h-[60px] text-white" style="background-color: var(--primary);">
+        <button class="w-full border-none text-md h-[60px] text-white rounded-md"
+          style="background-color: var(--primary);">
           Checkout
         </button>
 
@@ -65,36 +69,58 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 
-// TODO : make a type for the cart product and replace it with type any 
+// Interfaces
+import type { Product } from "@/Interfaces/Product";
+import type { PriceInfo } from "@/Interfaces/PriceInfo";
+import type { Cart } from "@/Interfaces/Cart";
 
-const cartProducts = reactive<any>([
-  {
-    id: 1,
-    name: "Philips Hue 7W BR30 Connected Downlight Lamp",
-    img: "product1.png",
-    price: 998,
-    quantity: 1,
-    unitPrice: 998
-  },
-  {
-    id: 2,
-    name: "Philips Hue 7W BR30 Connected Downlight Lamp",
-    img: "product1.png",
-    price: 998,
-    quantity: 1,
-    unitPrice: 998
-  },
-  {
-    id: 3,
-    name: "Philips Hue 7W BR30 Connected Downlight Lamp",
-    img: "product1.png",
-    price: 998,
-    quantity: 1,
-    unitPrice: 998
-  },
-]);
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/composables/useCart";
+
+// Accessing the store
+const productsStore = useCartStore();
+const { cart, isLoading } = storeToRefs(productsStore);
+
+const cartInfo = ref<Cart | null>(cart.value ?? { products: [], cartTotalPrice: 0, cartItemsNum: 0 });
+const priceInfo = ref<PriceInfo>({
+  subtotal: 0,
+  discount: 0,
+  deliveryFee: 0,
+});
+
+
+const calcTotalPrice = () => {
+  if (cart.value.cartTotalPrice > 0) {
+    priceInfo.value = {
+      subtotal: cart.value.cartTotalPrice || 0,
+      discount: cart.value.cartTotalPrice * 0.2 || 0,
+      deliveryFee: cart.value.cartTotalPrice > 0 ? 15 : 0,
+    };
+  } else {
+    priceInfo.value = {
+      subtotal: 0,
+      discount: 0,
+      deliveryFee: 0,
+    };
+  }
+};
+
+
+onMounted(async () => {
+  await productsStore.getCart();
+});
+
+
+watch(
+  () => cart.value
+  ,
+  async () => {
+    cartInfo.value = cart;
+    await calcTotalPrice();
+  }
+);
 
 </script>
 
@@ -106,6 +132,10 @@ const cartProducts = reactive<any>([
 
 .checkout {
   align-items: flex-start;
+}
+
+.price-table span {
+  font-size: 15px;
 }
 
 @media (max-width: 767px) {
