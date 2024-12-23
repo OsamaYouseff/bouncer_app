@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-path  text-black flex-center gap-3 ">
+  <div class="nav-path text-black flex-center gap-3">
     <slot />
   </div>
 </template>
@@ -16,7 +16,7 @@ a {
   color: black;
 }
 
-span {
+.nav-path span {
   font-size: 9px;
 }
 

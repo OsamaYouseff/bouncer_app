@@ -112,7 +112,7 @@ export const useCartStore = defineStore("cart", () => {
       cart.value.products[productIndex].total -=
         cart.value.products[productIndex].price;
       cart.value.cartTotalPrice -= cart.value.products[productIndex].price;
-
+      cart.value.cartItemsNum -= 1;
       saveToLocalStorage(cart.value);
     }
   };

@@ -10,7 +10,7 @@ const activeLink = ref<string>("");
 const links = [
   {
     name: "home",
-    path: "/home",
+    path: "/",
   },
   {
     name: "blog",
@@ -18,15 +18,15 @@ const links = [
   },
   {
     name: "iphone",
-    path: "/iphone",
+    path: "/",
   },
   {
     name: "ipad",
-    path: "/ipad",
+    path: "/",
   },
   {
     name: "macbook",
-    path: "/macbook",
+    path: "/",
   },
   {
     name: "accessories",
@@ -100,7 +100,7 @@ watch(
         <nav class="flex items-center gap-4 flex-wrap justify-center">
           <ul class="flex-center gap-8 fw-bold">
             <li class=" min-w-[100px]">
-              <nuxt-link class="flex-center gap-2" to="/profile">
+              <nuxt-link class="flex-center gap-2" to="/">
                 <img src="@/assets/icons/profile.svg" alt="profile-icon" />
                 <p class="text-sm">My Profile</p>
               </nuxt-link>
