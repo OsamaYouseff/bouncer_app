@@ -9,12 +9,11 @@ export const useProductsStore = defineStore("products", () => {
   const categories = ref<string[] | null>([]);
   const isLoading = ref<boolean>(false);
 
-  const getProducts = async (limit: number = 4) => {
-
+  const getProducts = async (limit: number = 4, offset: number = 0) => {
     isLoading.value = true;
     try {
       const response = await fetch(
-        `https://api.escuelajs.co/api/v1/products/?offset=0&limit=${limit}`
+        `https://api.escuelajs.co/api/v1/products/?offset=${offset}&limit=${limit}`
       );
       const data = await response.json();
       products.value = data;
@@ -23,7 +22,6 @@ export const useProductsStore = defineStore("products", () => {
     } finally {
       isLoading.value = false;
     }
-
   };
 
   const getProductsCategories = async () => {
@@ -59,7 +57,9 @@ export const useProductsStore = defineStore("products", () => {
     isLoading.value = true;
 
     try {
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`);
+      const response = await fetch(
+        `https://api.escuelajs.co/api/v1/products/${id}`
+      );
       const data: Product = await response.json(); // Ensure correct typing here
       product.value = data;
     } catch (error) {

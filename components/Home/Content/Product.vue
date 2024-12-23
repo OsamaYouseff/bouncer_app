@@ -15,7 +15,7 @@ const props = defineProps({
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
 
-const ratingValue = ref<number>(props.product.price % 5.5);
+const ratingValue = ref<number>(props.product?.price % 5.5);
 
 const addToCart = (event: Event, product: any) => {
   event.stopPropagation();
@@ -34,8 +34,8 @@ const openMessage = () => {
 <template>
   <!-- product Box -->
   <div
-    @click="navigateTo(`/product/${product.id}`)"
-    class="product-box relative cursor-pointer transition border-gray-300 border max-w-[270px] min-w-[270px] h-[379px] rounded flex-col-center px-5 text-center"
+    @click="navigateTo(`/product/${product?.id}`)"
+    class="product-box relative cursor-pointer transition border-gray-300 border max-w-[170px] lg:max-w-[270px] min-w-[47%] lg:min-w-[270px] h-[339px] lg:h-[379px] rounded flex-col-center px-5 text-center"
   >
     <!-- hot -->
     <div
@@ -60,17 +60,20 @@ const openMessage = () => {
 
     <img
       class="mb-8 mt-1 rounded-md"
-      :src="props.product.images[0]"
+      :src="props.product?.images[0]"
       alt="product-img"
     />
-    <p class="title mb-6 text-sm">{{ props.product.title.slice(0, 30) }}</p>
+    <p class="title mb-6 text-sm">
+      {{ props.product?.title.slice(0, 25)
+      }}{{ props.product?.title?.length > 25 ? "..." : "" }}
+    </p>
     <div class="rating">
       <el-rate disabled v-model="ratingValue" size="small" />
     </div>
     <div class="price flex-center gap-2">
-      <p class="curr text-[#ea4251]">${{ props.product.price }}</p>
+      <p class="curr text-[#ea4251]">${{ props.product?.price }}</p>
       <p class="prev text-[#c0c8ce] line-through">
-        ${{ props.product.price + 100 }}
+        ${{ props.product?.price + 100 }}
       </p>
     </div>
   </div>

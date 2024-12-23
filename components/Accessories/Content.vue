@@ -19,24 +19,44 @@ const productsStore = useProductsStore();
 const { products, isLoading } = storeToRefs(productsStore);
 
 // states
+
+const productsLimit = ref<number>(8);
 const activeView = ref<string>("grid");
+const activePage = ref<number>(1);
 
 // handlers
 const changeActiveView = (newView: string) => {
   activeView.value = newView;
 };
-const handleUpdateLimit = (limit: number) => {
-  console.log(limit);
+const handleUpdateLimit = (limit: number): void => {
+  productsStore.getProducts(limit, activePage.value * limit);
+};
 
-  productsStore.getProducts(limit);
+const handleActivePage = (page: number): void => {
+  console.log("Test page value", page);
+
+  activePage.value = page;
 };
 
 watchEffect(() => {
   // console.log(activeView)
 });
 
+watch(
+  () => activePage.value,
+  () => {
+    productsStore.getProducts(
+      productsLimit.value,
+      activePage.value * productsLimit.value
+    );
+  }
+);
+
 onMounted(() => {
-  productsStore.getProducts(8);
+  productsStore.getProducts(
+    productsLimit.value,
+    activePage.value * productsLimit.value
+  );
 });
 </script>
 
@@ -61,6 +81,8 @@ onMounted(() => {
 
     <div class="flex-col-center gap-5 overflow-hidden">
       <Banner :maxHeight:="'340px'" />
+
+      <!-- Filter Bar -->
       <FilterBar
         @update:viewOption="changeActiveView"
         :activeView="activeView"
@@ -83,9 +105,19 @@ onMounted(() => {
           </div>
         </Drawer>
       </FilterBar>
+
       <LoaderComponent v-if="isLoading" />
+
+      <div
+        v-else-if="!products.length"
+        class="flex-center w-full min-h-[500px] grow"
+      >
+        <h2 class="text-xl">There is no products added yet !</h2>
+      </div>
+
       <!-- Products -->
-      <div v-else>
+      <div v-else class="mb-4">
+        <!-- List View -->
         <div
           v-if="activeView == 'list'"
           class="lg:ml-3 ml-1 flex md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-10"
@@ -97,9 +129,10 @@ onMounted(() => {
           />
         </div>
 
+        <!-- Grid View -->
         <div
           v-else
-          class="product-container lg:ml-0 ml-5 flex md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-3"
+          class="product-container px-0.5 flex justify-center flex-wrap lg:p-8 p-0 gap-3"
         >
           <Product
             v-for="product in products"
@@ -110,7 +143,10 @@ onMounted(() => {
       </div>
 
       <!-- Pagination -->
-      <PaginationBar />
+      <PaginationBar
+        :activePage="activePage"
+        @update:active-page="handleActivePage"
+      />
     </div>
   </div>
 </template>
