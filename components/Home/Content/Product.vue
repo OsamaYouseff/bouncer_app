@@ -40,7 +40,7 @@ const openMessage = () => {
     <!-- hot -->
     <div
       class="hot absolute text-white px-2 py-0.5 rounded bg-[#ff4857] top-2 left-2"
-      :class="{ hidden: product % 3 != 0 }"
+      :class="{ hidden: product?.id % 3 != 0 }"
     >
       HOT
     </div>
