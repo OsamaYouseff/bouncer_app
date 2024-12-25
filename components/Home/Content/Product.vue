@@ -35,7 +35,7 @@ const openMessage = () => {
   <!-- product Box -->
   <div
     @click="navigateTo(`/product/${product?.id}`)"
-    class="product-box relative cursor-pointer transition border-gray-300 border max-w-[170px] lg:max-w-[270px] min-w-[47%] lg:min-w-[270px] h-[339px] lg:h-[379px] rounded flex-col-center px-5 text-center"
+    class="product-box relative py-5 lg:py-0 cursor-pointer transition border-gray-300 border max-w-[170px] lg:max-w-[270px] min-w-[47%] lg:min-w-[270px] lg:h-[379px] rounded flex-col-center px-5 text-center"
   >
     <!-- hot -->
     <div
@@ -48,7 +48,7 @@ const openMessage = () => {
     <!-- Action Box -->
     <div
       @click.prevent=""
-      class="action w-full h-[270px] absolute top-0 left-1/2 transform -translate-x-1/2 flex-center gap-2 bg-[#ffffff9e]"
+      class="action w-full h-3/4 absolute top-0 left-1/2 transform -translate-x-1/2 flex-center gap-2 bg-[#ffffff9e]"
     >
       <img src="@/assets/icons/fav.svg" alt="sale-img" />
       <img
@@ -59,7 +59,8 @@ const openMessage = () => {
     </div>
 
     <img
-      class="mb-8 mt-1 rounded-md"
+      class="mb-8 rounded-md"
+      style="max-height: 50%"
       :src="props.product?.images[0]"
       alt="product-img"
     />

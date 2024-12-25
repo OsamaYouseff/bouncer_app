@@ -33,9 +33,7 @@ export const useCartStore = defineStore("cart", () => {
 
   const addToCart = (product: Product, quantity: number = 1): void => {
     cart.value = fetchDataFromLocalStorage();
-
     const currentProducts = cart.value.products;
-
     const addedProduct = {
       ...product,
       quantity: quantity,
@@ -44,6 +42,7 @@ export const useCartStore = defineStore("cart", () => {
 
     if (cart.value.products.length === 0) {
       currentProducts.push(addedProduct);
+      cart.value.cartItemsNum += quantity;
     } else {
       const productIndex = currentProducts.findIndex(
         (item) => item.id === product.id
@@ -51,13 +50,13 @@ export const useCartStore = defineStore("cart", () => {
 
       if (productIndex === -1) {
         currentProducts.push(addedProduct);
+        cart.value.cartItemsNum += quantity;
       } else {
         currentProducts[productIndex].quantity += quantity;
         currentProducts[productIndex].total += product.price * quantity;
       }
     }
 
-    cart.value.cartItemsNum += quantity;
     cart.value.cartTotalPrice += product.price * quantity;
 
     saveToLocalStorage({ ...cart.value, products: currentProducts });
@@ -76,7 +75,7 @@ export const useCartStore = defineStore("cart", () => {
     cart.value.products = cart.value.products.filter(
       (item) => item.id !== targetId
     );
-    cart.value.cartItemsNum -= targetProduct.quantity;
+    cart.value.cartItemsNum -= 1;
     cart.value.cartTotalPrice -= targetProduct.total;
 
     if (cart.value.products.length === 0) {
@@ -92,10 +91,10 @@ export const useCartStore = defineStore("cart", () => {
     const productIndex = cart.value.products.findIndex(
       (item) => item.id === targetId
     );
-    cart.value.products[productIndex].quantity += 1;
-    cart.value.products[productIndex].total +=
-      cart.value.products[productIndex].price;
-    cart.value.cartTotalPrice += cart.value.products[productIndex].price;
+    const product = cart.value.products[productIndex];
+    product.quantity += 1;
+    product.total += product.price;
+    cart.value.cartTotalPrice += product.price;
     saveToLocalStorage(cart.value);
   };
 
@@ -107,12 +106,12 @@ export const useCartStore = defineStore("cart", () => {
 
     if (cart.value.products[productIndex].quantity === 1) {
       deleteFromCart(targetId);
-    } else {
-      cart.value.products[productIndex].quantity -= 1;
-      cart.value.products[productIndex].total -=
-        cart.value.products[productIndex].price;
-      cart.value.cartTotalPrice -= cart.value.products[productIndex].price;
       cart.value.cartItemsNum -= 1;
+    } else {
+      const product = cart.value.products[productIndex];
+      product.quantity -= 1;
+      product.total -= product.price;
+      cart.value.cartTotalPrice -= product.price;
       saveToLocalStorage(cart.value);
     }
   };
