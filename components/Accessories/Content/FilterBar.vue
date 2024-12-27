@@ -9,63 +9,55 @@ const props = defineProps({
   activeView: {
     type: String,
   },
+  handleUpdateLimit: {
+    type: Function,
+  },
 });
 
 const productsCount = ref<number>(8);
 const emit = defineEmits(["update:viewOption", "update:itemsLimit"]);
+
+const updateLimit = (limit: number) => {
+  productsCount.value = limit;
+  props.handleUpdateLimit?.(limit);
+};
 </script>
 
 <template>
   <!-- Accessories Filter -->
   <div
-    class="filter-bar rounded-md flex-between grow gap-2 flex-wrap overflow-hidden lg:max-w-full"
+    class="filter-bar rounded-md flex-between grow gap-4 flex-wrap lg:max-w-full"
     style="background: #f6f7f8; padding: 20px"
   >
+    <!-- items limit -->
     <div class="flex grow gap-6">
       <span class="min-w-[60px]">
         <span class="items-num">{{ productsCount }}</span> Items
       </span>
       <div class="flex-between gap-3">
         <span>Show</span>
-        <el-menu
-          class="el-menu-demo"
-          mode="horizontal"
-          :ellipsis="false"
-          index="1"
-          style="width: 116px"
-        >
-          <el-sub-menu class="grow">
-            <template #title>{{ productsCount }}</template>
-            <el-menu-item
-              @click="emit('update:itemsLimit', (productsCount = n * 4))"
-              v-for="n in 4"
-              :index="1 - n"
-              :key="n"
-              >{{ n * 4 }}</el-menu-item
-            >
-          </el-sub-menu>
-        </el-menu>
+        <GeneralSelectMenu
+          :options="['8', '12', '16', '20']"
+          style="width: 80px; height: 38px"
+          @update:itemsLimit="updateLimit"
+        />
       </div>
     </div>
-
+    <slot />
     <div class="flex-between gap-3">
       <span class="min-w-[68px]"> Sorted By</span>
       <!-- menu -->
-      <el-menu
-        class="el-menu-demo"
-        mode="horizontal"
-        :ellipsis="false"
-        style="width: 116px"
-      >
-        <el-sub-menu index="1">
-          <template #title>Name</template>
-          <el-menu-item index="1-1">MacBook Pro</el-menu-item>
-          <el-menu-item index="1-2">MackBook Air</el-menu-item>
-          <el-menu-item index="1-3">MackBook Max</el-menu-item>
-        </el-sub-menu>
-      </el-menu>
+      <GeneralSelectMenu
+        :options="[
+          'Newest',
+          'Oldest',
+          'Price: Low to High',
+          'Price: High to Low',
+        ]"
+        style="width: 145px; height: 38px"
+      />
     </div>
-    <slot />
+
     <!-- view options -->
     <div class="view-options flex-end gap-2">
       <button

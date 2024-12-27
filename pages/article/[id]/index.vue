@@ -1,5 +1,19 @@
 <template>
   <section class="container mx-auto px-2">
+    <div class="drawer mb-4 text-center">
+      <button
+        class="bg-white text-[14px] min-w-[340px] z-auto h-[40px] px-3 border-[1px] border-[#f6f7f8] rounded-md shadow-lg"
+        @click="handleOpenDrawer"
+      >
+        Top Articles
+      </button>
+      <GeneralDrawer
+        :showDrawer="showDrawer"
+        @update:closeDrawer="showDrawer = false"
+      >
+        <SideBar />
+      </GeneralDrawer>
+    </div>
     <div class="article-cover w-full mb-10 md:px-0 px-2">
       <img
         class="w-full rounded-md"
@@ -134,18 +148,18 @@
         </div>
       </div>
 
-      <Drawer :drawerBtnTitle="'Top Articles'">
-        <SideBar />
-      </Drawer>
-
       <SideBar class="side-bar" />
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import Drawer from "@/components/General/Drawer.vue";
 import SideBar from "~/components/Blog/SideBarComponent.vue";
+
+const showDrawer = ref<boolean>(false);
+const handleOpenDrawer = (): void => {
+  showDrawer.value = true;
+};
 </script>
 
 <style scoped>

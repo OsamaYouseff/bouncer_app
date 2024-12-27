@@ -1,11 +1,11 @@
 <template>
   <Listbox as="div" v-model="selected">
-    <div class="relative flex-center">
+    <div class="relative flex-center h-[38px] z-50">
       <ListboxButton
         class="grid w-full grid-cols-1 rounded-md bg-white pl-3 pr-2 text-left text-gray-900 shadow-lg focus:outline-indigo-600 sm:text-sm/6 cursor-pointer"
       >
         <span
-          class="col-start-1 row-start-1 flex items-center gap-3 pr-6 text-gray-500"
+          class="col-start-1 row-start-1 flex items-center gap-3 pr-6 text-gray-500 h-[38px]"
         >
           <span class="block truncate">{{ selected }}</span>
         </span>
@@ -20,12 +20,13 @@
         leave-active-class="transition ease-in "
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
-        class="absolute top-0"
+        class="absolute top-0 z-100"
       >
         <ListboxOptions
           class="absolute z-10 translate-y-8 w-full border-1 border-black overflow-auto rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
         >
           <ListboxOption
+            @click="emit('update:itemsLimit', option)"
             as="template"
             v-for="option in options"
             :key="option"
@@ -72,6 +73,8 @@ const props = defineProps({
     default: [""],
   },
 });
+
+const emit = defineEmits(["update:viewOption", "update:itemsLimit"]);
 
 const selected = ref(props.options[0]);
 </script>

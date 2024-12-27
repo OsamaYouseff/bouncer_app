@@ -73,7 +73,7 @@ watch(
         </div>
 
         <nav class="flex items-center gap-4 flex-wrap justify-center">
-          <ul class="flex-center gap-8 fw-bold">
+          <ul class="flex-center gap-8 fw-bold flex-wrap">
             <li class="min-w-[100px]">
               <nuxt-link class="flex-center gap-2" to="/">
                 <img src="@/assets/icons/profile.svg" alt="profile-icon" />
@@ -87,18 +87,20 @@ watch(
               </nuxt-link>
               <p class="text-sm" style="color: var(--gray)">$0.00</p>
             </li>
-          </ul>
-
-          <ul>
-            <el-autocomplete
-              v-model="searchValue"
-              clearable
-              class="inline-input min-w-[300px] border rounded-md"
+            <li
+              class="search-box flex relative min-w-[260px] md:grow-0 mx-8 md:mx-0 grow border rounded-md p-1 h-[30px]"
             >
-              <template #prefix>
-                <img src="@/assets/icons/search.svg" />
-              </template>
-            </el-autocomplete>
+              <img
+                class="absolute left-2"
+                src="@/assets/icons/search.svg"
+                alt="search-icon"
+              />
+              <input
+                class="absolute left-8 top-1/2 transform -translate-y-1/2 focus:outline-none"
+                type="text"
+                placeholder="Search"
+              />
+            </li>
           </ul>
         </nav>
       </div>

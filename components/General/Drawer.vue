@@ -1,51 +1,77 @@
 <template>
-  <div class="drawer">
-    <el-button @click="drawer = true" style="font-size: 14px; height: 38px">
-      {{ props.drawerBtnTitle }}
-    </el-button>
-
-    <el-drawer
-      class="wrapper"
-      size="320"
-      direction="ltr"
-      v-model="drawer"
-      title="I am the title"
-      :with-header="false"
+  <TransitionRoot as="template" :show="showDrawer">
+    <Dialog
+      class="relative z-50 bg-black h-screen overflow-y-auto"
+      @close="emit('update:closeDrawer')"
     >
-      <slot />
-    </el-drawer>
-  </div>
+      <TransitionChild
+        as="template"
+        enter="ease-in-out duration-500"
+        enter-from="opacity-0"
+        enter-to="opacity-100"
+        leave="ease-in-out duration-500"
+        leave-from="opacity-100"
+        leave-to="opacity-0"
+      >
+        <div class="fixed inset-0 transition-opacity" />
+      </TransitionChild>
+
+      <div class="fixed inset-0overflow-x-hidden">
+        <div class="absolute inset-0 overflow-x-hidden">
+          <div
+            class="pointer-events-none fixed inset-y-0 left-0 flex max-w-full"
+          >
+            <TransitionChild
+              as="template"
+              enter="transform transition ease-in-out duration-300 sm:duration-500"
+              enter-from="-translate-x-full"
+              enter-to="translate-x-0"
+              leave="transform transition ease-in-out duration-300 sm:duration-500"
+              leave-from="translate-x-0"
+              leave-to="-translate-x-full"
+            >
+              <DialogPanel class="pointer-events-auto max-w-[310px]">
+                <div
+                  class="flex h-screen overflow-y-auto flex-col overflow-x-hidden bg-white py-8 shadow-xl"
+                >
+                  <div class="relative mt-6 flex-1 px-4 sm:px-6 min-h-fit">
+                    <slot />
+                  </div>
+                </div>
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </div>
+      </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
-  drawerBtnTitle: {
-    type: String,
-    default: "Sidebar",
+  showDrawer: {
+    type: Boolean,
+    default: false,
   },
 });
 
-const drawer = ref(false);
+const showDrawer = ref(props.showDrawer);
+const emit = defineEmits(["update:closeDrawer"]);
+
+watch(
+  () => props.showDrawer,
+  () => {
+    showDrawer.value = props.showDrawer;
+  }
+);
 </script>
-
-<style scoped>
-.drawer {
-  /* position: fixed; */
-  display: none !important;
-  top: 5px;
-  left: 5px;
-  z-index: 9999;
-}
-
-@media (max-width: 768px) {
-  .drawer {
-    display: block !important;
-  }
-
-  .filter-wrapper {
-    display: none !important;
-  }
-}
-</style>

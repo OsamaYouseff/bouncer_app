@@ -1,6 +1,20 @@
 <template>
   <section class="blog container mx-auto md:px-0 px-3">
     <h1 class="text-center mb-10 text-[30px] font-medium">LATEST ARTICLES</h1>
+    <div class="drawer mb-4 text-center">
+      <button
+        class="bg-white text-[14px] min-w-[340px] z-auto h-[40px] px-3 border-[1px] border-[#f6f7f8] rounded-md shadow-lg"
+        @click="handleOpenDrawer"
+      >
+        Top Articles
+      </button>
+      <GeneralDrawer
+        :showDrawer="showDrawer"
+        @update:closeDrawer="showDrawer = false"
+      >
+        <SideBar />
+      </GeneralDrawer>
+    </div>
     <!-- Blog Content -->
     <div
       class="content-wrapper flex-center gap-6"
@@ -44,10 +58,6 @@
           </div>
         </div>
       </div>
-
-      <Drawer :drawerBtnTitle="'Top Articles'">
-        <SideBar />
-      </Drawer>
 
       <SideBar class="side-bar" />
     </div>
@@ -108,6 +118,11 @@ const articles = reactive<any>([
     des: "Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt.",
   },
 ]);
+const showDrawer = ref<boolean>(false);
+
+const handleOpenDrawer = (): void => {
+  showDrawer.value = true;
+};
 </script>
 
 <style scoped>

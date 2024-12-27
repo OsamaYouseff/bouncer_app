@@ -23,12 +23,14 @@ const { products, isLoading } = storeToRefs(productsStore);
 const productsLimit = ref<number>(8);
 const activeView = ref<string>("grid");
 const activePage = ref<number>(1);
+const showDrawer = ref<boolean>(false);
 
 // handlers
 const changeActiveView = (newView: string) => {
   activeView.value = newView;
 };
 const handleUpdateLimit = (limit: number): void => {
+  console.log(limit);
   productsStore.getProducts(limit, activePage.value * limit);
 };
 
@@ -36,6 +38,10 @@ const handleActivePage = (page: number): void => {
   console.log("Test page value", page);
 
   activePage.value = page;
+};
+
+const handleOpenDrawer = (): void => {
+  showDrawer.value = true;
 };
 
 watchEffect(() => {
@@ -86,24 +92,38 @@ onMounted(() => {
       <FilterBar
         @update:viewOption="changeActiveView"
         :activeView="activeView"
-        @update:itemsLimit="handleUpdateLimit"
+        :handleUpdateLimit="handleUpdateLimit"
       >
-        <Drawer :drawerBtnTitle="'More Filters'">
-          <div class="grow flex-col-center gap-4 items-center">
-            <AccessoriesFilter />
-            <Price />
-            <Color />
-            <Brand />
+        <!-- Drawer -->
+        <div class="drawer">
+          <button
+            class="bg-white text-[14px] z-auto h-[40px] px-3 border-[1px] border-[#f6f7f8] rounded-md"
+            @click="handleOpenDrawer"
+          >
+            More Filters
+          </button>
+          <GeneralDrawer
+            :showDrawer="showDrawer"
+            @update:closeDrawer="showDrawer = false"
+          >
+            <div class="grow flex-col-center gap-4 items-center">
+              <AccessoriesFilter />
+              <Price />
+              <Color />
+              <Brand />
 
-            <!-- More btn -->
-            <button
-              class="brand-filter min-h-full rounded-md min-w-[270px] max-w-[270px] cursor-pointer"
-              style="background: #f6f7f8; padding: 20px"
-            >
-              MORE
-            </button>
-          </div>
-        </Drawer>
+              <!-- More btn -->
+              <button
+                class="brand-filter min-h-full rounded-md min-w-[270px] max-w-[270px] cursor-pointer"
+                style="background: #f6f7f8; padding: 20px"
+              >
+                MORE
+              </button>
+            </div>
+          </GeneralDrawer>
+        </div>
+
+        
       </FilterBar>
 
       <LoaderComponent v-if="isLoading" />
@@ -162,6 +182,14 @@ onMounted(() => {
 
 .banner .img-container {
   height: 400px;
+}
+
+.drawer {
+  /* position: fixed; */
+  display: none !important;
+  top: 5px;
+  left: 5px;
+  z-index: 9999;
 }
 
 @media (max-width: 768px) {
