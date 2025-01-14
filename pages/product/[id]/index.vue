@@ -64,7 +64,7 @@ const slicedProduct = products.value.slice(0, 5);
 // handlers
 
 onMounted(async () => {
-  await productsStore.getAProduct(useRoute().params?.id);
+  await productsStore.getAProduct(Number(useRoute().params?.id));
   await productsStore.getProducts(6);
 });
 </script>
