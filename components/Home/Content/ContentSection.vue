@@ -57,7 +57,7 @@ watch(productsLimit, () => {
 
       <!-- filters -->
       <nav>
-        <ul class="flex-center gap-14 font-[400] flex-wrap">
+        <ul class="flex-center gap-14 font-[400] flex-wrap mb-5">
           <li
             v-for="filter in filters"
             :key="filter.name"

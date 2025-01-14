@@ -5,6 +5,7 @@ import { ElNotification } from "element-plus";
 // pinia store
 import { storeToRefs } from "pinia";
 import { useCartStore } from "@/composables/useCart";
+import CustomRating from "~/components/General/CustomRating.vue";
 
 const props = defineProps({
   product: {
@@ -15,7 +16,7 @@ const props = defineProps({
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
 
-const ratingValue = ref<number>(props.product?.price % 5.5);
+const ratingValue = ref<number>(Math.trunc(props.product?.price % 5));
 
 const addToCart = (event: Event, product: any) => {
   event.stopPropagation();
@@ -68,8 +69,8 @@ const openMessage = () => {
       {{ props.product?.title.slice(0, 25)
       }}{{ props.product?.title?.length > 25 ? "..." : "" }}
     </p>
-    <div class="rating">
-      <el-rate disabled v-model="ratingValue" size="small" />
+    <div class="rating mb-2">
+      <CustomRating :rating="ratingValue" />
     </div>
     <div class="price flex-center gap-2">
       <p class="curr text-[#ea4251]">${{ props.product?.price }}</p>

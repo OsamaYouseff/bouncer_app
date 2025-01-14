@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CustomRating from "~/components/General/CustomRating.vue";
+
 const ratingValue = ref<number>(4);
 </script>
 
@@ -29,7 +31,7 @@ const ratingValue = ref<number>(4);
             Apple Macbook Pro
           </p>
           <div class="rating">
-            <el-rate disabled v-model="ratingValue" size="small" />
+            <CustomRating :rating="ratingValue" />
           </div>
           <div class="price flex gap-2">
             <p class="curr text-[#ea4251]">$499</p>
@@ -57,7 +59,7 @@ const ratingValue = ref<number>(4);
             H-Squared tvTray
           </p>
           <div class="rating">
-            <el-rate disabled v-model="ratingValue" size="small" />
+            <CustomRating :rating="ratingValue" />
           </div>
           <div class="price flex gap-2">
             <p class="curr text-[#ea4251]">$499</p>
@@ -85,7 +87,7 @@ const ratingValue = ref<number>(4);
             Netatmo Rain Gauge
           </p>
           <div class="rating">
-            <el-rate disabled v-model="ratingValue" size="small" />
+            <CustomRating :rating="ratingValue" />
           </div>
           <div class="price flex gap-2">
             <p class="curr text-[#ea4251]">$499</p>

@@ -1,7 +1,20 @@
 <template>
   <div class="slider-demo-block">
-    <el-slider size="small" @change="emit('update:minPrice', value[0]), emit('update:maxPrice', value[1])"
-      v-model="value" range :max="10000" />
+    <div class="py-2 w-full">
+      <input
+        v-model="value"
+        @change="
+          (event) => {
+            emit('update:maxPrice', event?.target?.value);
+          }
+        "
+        max="5000"
+        min="0"
+        step="100"
+        type="range"
+        class="h-2 w-full cursor-grab appearance-none rounded-full bg-gray-200 disabled:cursor-not-allowed"
+      />
+    </div>
   </div>
 </template>
 
@@ -15,12 +28,10 @@ const props = defineProps({
   maxPrice: {
     type: Number,
   },
-})
-const value = ref([props.minPrice, props.maxPrice]);
+});
+const value = ref(props.maxPrice);
 
-const emit = defineEmits(['update:minPrice', 'update:maxPrice']);
-
-
+const emit = defineEmits(["update:minPrice", "update:maxPrice"]);
 </script>
 
 <style scoped>

@@ -30,7 +30,7 @@
           </h2>
           <!-- rating -->
           <div class="rating-wrapper flex gap-2 pb-2 border-b mb-4">
-            <el-rate disabled allow-half v-model="ratingValue" size="small" />
+            <CustomRating :rating="ratingValue" />
             <span class="reviews text-[14px]">0 reviews</span>
             <button
               class="submit-review border-0 text-[14px]"
@@ -197,12 +197,13 @@ import mainImg from "@/assets/images/main-img.jpg";
 import subImg1 from "@/assets/images/sub-img-1.jpg";
 import subImg2 from "@/assets/images/sub-img-2.jpg";
 import subImg4 from "@/assets/images/sub-img-4.jpg";
+import CustomRating from "../General/CustomRating.vue";
 
 const subImages = ref(
   props.product?.images ?? [mainImg, subImg1, subImg2, subImg4]
 );
 const activeImage = ref(props.product?.images[0] ?? mainImg);
-const ratingValue = ref<number>(props.product?.price % 5.5);
+const ratingValue = ref<number>(4);
 
 const Colors = ["Blue", "Red", "Green", "Black"];
 const activeColor = ref<string>("Black");

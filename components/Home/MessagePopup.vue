@@ -1,8 +1,8 @@
 <template>
   <div class="max-h-screen">
-    <el-button style="display: none" plain @click="centerDialogVisible = true">
+    <button style="display: none" plain @click="centerDialogVisible = true">
       Click to open the Dialog
-    </el-button>
+    </button>
 
     <el-dialog
       class="message-popup max-w-[100%]"
