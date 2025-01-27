@@ -150,9 +150,6 @@ watch(
   }
 }
 
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
-  margin-right: auto;
-}
 
 .nav-links li {
   cursor: pointer;

@@ -140,38 +140,48 @@
       </div>
 
       <!-- description -->
-      <div class="des min-h-[350px]">
-        <el-tabs
-          v-model="activeName"
-          class="demo-tabs bg-[#fafafb] rounded p-3"
-          @tab-click="handleClick"
-        >
-          <el-tab-pane
-            class="p-5"
-            label="Product Information"
-            name="product-info"
+      <div class="description min-h-[350px] demo-tabs bg-[#fafafb] rounded p-3">
+        <!-- tabs -->
+        <div class="tabs-container block mb-3 pl-3">
+          <ul
+            class="flex border-b-[3px] border-gray-200 space-x-10 transition-all duration-300 -mb-px text-[14px]"
           >
-            <p class="text-[14px] mb-6 leading-7">
-              {{ props.product?.description.slice(0, 814) }}.
+            <li class="relative" v-for="tab in tabs" :key="tab.id">
+              <a
+                :class="{
+                  active: tab.id === selectedTab,
+                }"
+                @click="selectedTab = tab.id"
+                class="inline-block pb-2 pt-4 text-gray-700 font-medium border-b-2 border-transparent tablink whitespace-nowrap"
+                role="tab"
+              >
+                {{ tab.title }}
+              </a>
+
+              <span
+                v-show="tab.id === selectedTab"
+                class="absolute -bottom-[3px] left-0 w-full h-[3px] bg-[#33a0ff]"
+              ></span>
+            </li>
+          </ul>
+        </div>
+        <!-- description -->
+        <div class="description-content">
+          <div
+            v-for="tab in tabs"
+            v-show="tab.id === selectedTab"
+            :key="tab.id"
+            role="tabpanel"
+            aria-labelledby="tabs-with-underline-item-1"
+          >
+            <p class="text-[14px] mb-4 leading-7 px-4 py-3">
+              {{ tab.content.slice(0, 370) }}
             </p>
-            <p class="text-[14px] mb-6 leading-7">
-              Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida
-              et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere cubilia Curae.
+            <p class="text-[14px] leading-7 px-4">
+              {{ tab.content.slice(370, 1000) }}
             </p>
-          </el-tab-pane>
-          <el-tab-pane class="p-5" label="Reviews 0" name="reviews">
-            <div class="flex-center">
-              <p>NO Reviews.</p>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane class="p-5" label="Another Tab" name="another-tab">
-            <div class="flex-center">
-              <p>Another Tab to add more content.</p>
-            </div>
-          </el-tab-pane>
-        </el-tabs>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -180,8 +190,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from "vue";
-import type { TabsPaneContext } from "element-plus";
+import { ref } from "vue";
 import BestSeller from "./BestSeller.vue";
 // pinia store
 import { storeToRefs } from "pinia";
@@ -202,12 +211,39 @@ import CustomRating from "../General/CustomRating.vue";
 const subImages = ref(
   props.product?.images ?? [mainImg, subImg1, subImg2, subImg4]
 );
-const activeImage = ref(props.product?.images[0] ?? mainImg);
+const activeImage = ref(props.product?.images[0] || mainImg);
 const ratingValue = ref<number>(4);
 
 const Colors = ["Blue", "Red", "Green", "Black"];
 const activeColor = ref<string>("Black");
 const Sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
+const tabs = ref([
+  {
+    id: 1,
+    title: "Product Information",
+    content: `
+    Elevate your casual wardrobe with these classic olive chino shorts. Designed for comfort and versatility, they feature a smooth waistband, practical pockets, and a tailored fit that makes them perfect for both relaxed weekends and smart-casual occasions. The durable fabric ensures they hold up throughout your daily activities while maintaining a stylish look..
+    
+    Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+    `,
+  },
+  {
+    id: 2,
+    title: "Reviews 0",
+    content: `
+    No Reviews.
+    `,
+  },
+  {
+    id: 3,
+    title: "Another Tab",
+    content: `
+    Another Tab to add more content.
+    `,
+  },
+]);
+
+const selectedTab = ref(1);
 
 const quantity = ref(2);
 const cartStore = useCartStore();
@@ -231,10 +267,6 @@ const handleChange = (value: number) => {
 };
 
 const activeName = ref("product-info");
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  // console.log(tab, event);
-};
 </script>
 
 <style scoped>
@@ -283,28 +315,6 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   background: red;
   border-radius: 50%;
   border: 1px solid transparent;
-}
-
-.el-menu--horizontal {
-  --el-menu-horizontal-height: 38px;
-}
-
-.el-menu-demo > li {
-  border: 1px solid #eee;
-  width: 116px;
-  border-radius: 4px;
-}
-
-.demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.el-tabs__nav > div {
-  padding: 40px 20px;
-  background: #000;
 }
 
 .social-media span,

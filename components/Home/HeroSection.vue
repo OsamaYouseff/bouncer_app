@@ -1,8 +1,39 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import slideImg from "@/assets/images/slider.jpg";
+
+const slides = [
+  { image: slideImg, alt: "Slide 1" },
+  { image: slideImg, alt: "Slide 2" },
+  { image: slideImg, alt: "Slide 3" },
+];
+</script>
 <template>
   <section class="slider md:h-[652px] mb-[165px]">
     <div class="container mx-auto lg:max-w-[1125px] grow relative flex-center">
-      <HomeSwiperWrapper />
+      <HomeSwiperWrapper>
+        <div
+          class="slider-item flex-between min-w-full pl-10"
+          v-for="(slide, index) in slides"
+          :key="index"
+        >
+          <div class="text text-white">
+            <h1 class="mb-3 text-[36px]" style="text-shadow: 2px 2px 5px #000">
+              iPhone X
+            </h1>
+            <p class="w-[300px] text-[14px] mb-6">
+              Lorem is a dummy or text used in and to fill empty spaces
+              placeholder in a layout that do not yet have content graphic.
+            </p>
+            <NuxtLink
+              class="pb-[2px] font-medium border-b-4 text-white hover:border-blue-400"
+              to="/"
+            >
+              MORE
+            </NuxtLink>
+          </div>
+          <div class="img-container lg:min-w-[600px] sm:max-w-[300px]"></div>
+        </div>
+      </HomeSwiperWrapper>
     </div>
 
     <!-- section boxes -->

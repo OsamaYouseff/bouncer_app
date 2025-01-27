@@ -92,7 +92,4 @@ span {
   font-size: 14px;
 }
 
-.el-menu--horizontal {
-  --el-menu-horizontal-height: 38px;
-}
 </style>

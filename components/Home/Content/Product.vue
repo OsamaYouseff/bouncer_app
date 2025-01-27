@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { ElNotification } from "element-plus";
 
 // pinia store
 import { storeToRefs } from "pinia";
@@ -25,11 +24,12 @@ const addToCart = (event: Event, product: any) => {
 };
 
 const openMessage = () => {
-  ElNotification({
-    title: "Success",
-    message: "Product added to cart successfully",
-    type: "success",
-  });
+  $toast.success("Product added to cart successfully");
+  // ElNotification({
+  //   title: "Success",
+  //   message: "Product added to cart successfully",
+  //   type: "success",
+  // });
 };
 </script>
 <template>

@@ -5,28 +5,32 @@ const props = defineProps({
   topProducts: {
     type: Array,
   },
-})
-
-
+});
 </script>
 
 <template>
-  <sidebar class="min-w-[270px] flex-center grow items-center flex-wrap gap-4">
+  <sidebar
+    class="min-w-[270px] flex-center grow items-center flex-wrap gap-4 mx-3"
+  >
     <!-- Best Seller Wrapper -->
-    <div class="xl:min-h-[428px] min-h-[500px] lg:min-w-full xl:max-w-[270px] min-w-[270px] md:mb-0 xl:mb-4">
-      <p class="grow text-[18px] text-[#475669] uppercase text-start">
+    <div class="xl:max-w-[270px] min-w-[270px] md:mb-0 xl:mb-4 mr-4">
+      <p class="grow text-[18px] text-[#475669] uppercase text-start pl-2">
         Best Sellers
       </p>
-      <el-carousel trigger="click" pause-on-hover class="carousel rounded-md min-h-[385px]">
-        <el-carousel-item v-for="product in topProducts" :key="product.id">
-          <Product :product="product" />
-        </el-carousel-item>
-      </el-carousel>
+
+      <HomeSwiperWrapper class="max-w-[270px]" :slides="topProducts?.length">
+        <Product
+          v-for="product in topProducts"
+          :key="product.id"
+          :product="product"
+        />
+      </HomeSwiperWrapper>
     </div>
 
     <!-- section box -->
     <div
-      class="section-box bg-[#c0c8ce] z-20 relative flex-between xl:w-[349px] lg:w-1/2 w-full lg:mx-0 mx-4 min-h-[408px] md:min-h-[500px]">
+      class="section-box bg-[#c0c8ce] z-20 relative flex-between xl:w-[349px] lg:w-1/2 w-full lg:mx-0 mx-4 min-h-[408px]"
+    >
       <div class="bg-layer w-full h-full absolute">
         <div class="text z-30 pt-6 pl-6">
           <h2 class="mb-4 text-2xl font-bold">GoPro Hero 6</h2>
@@ -41,19 +45,6 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.el-carousel__item {
-  min-height: 400px;
-}
-
-.el-carousel__indicators--horizontal {
-  background: #000;
-  width: 100%;
-}
-
-.el-carousel__button {
-  width: 10px;
-}
-
 .section-box .bg-layer {
   background: url("@/assets/images/cam.png") no-repeat right 90%;
 }
