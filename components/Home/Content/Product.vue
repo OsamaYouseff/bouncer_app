@@ -35,11 +35,11 @@ const openMessage = () => {
   <!-- product Box -->
   <div
     @click="navigateTo(`/product/${product?.id}`)"
-    class="product-box relative py-5 lg:py-0 cursor-pointer transition border-gray-300 border max-w-[170px] lg:max-w-[270px] min-w-[47%] lg:min-w-[270px] lg:h-[379px] rounded flex-col-center px-5 text-center"
+    class="product-box relative py-5 lg:py-0 cursor-pointer transition border-gray-300 border max-w-[270px] lg:max-w-[270px] min-w-[100%] lg:min-w-[270px] lg:h-[379px] rounded flex-col-center px-5 text-center"
   >
     <!-- hot -->
     <div
-      class="hot absolute text-white px-2 py-0.5 rounded bg-[#ff4857] top-2 left-2"
+      class="hot absolute text-white px-2 py-0.5 rounded bg-[#ff4857] top-1 left-1"
       :class="{ hidden: product?.id % 3 != 0 }"
     >
       HOT
