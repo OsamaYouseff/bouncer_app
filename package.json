@@ -14,10 +14,10 @@
     "@heroicons/vue": "^2.2.0",
     "@pinia/nuxt": "^0.8.0",
     "nuxt": "^3.14.1592",
+    "nuxt-toastify": "^1.0.0",
     "pinia": "^2.2.8",
     "vue": "latest",
-    "vue-router": "latest",
-    "vue-toastification": "^1.7.14"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.2",

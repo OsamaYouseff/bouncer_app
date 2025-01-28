@@ -7,6 +7,10 @@ const props = defineProps({
     type: Number,
     default: 3,
   },
+  autoSwap: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const slides = [
@@ -23,6 +27,12 @@ const nextSlide = () => {
 const prevSlide = () => {
   currentSlide.value = (currentSlide.value - 1 + props.slides) % props.slides;
 };
+
+if (props.autoSwap) {
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+}
 </script>
 
 <template>

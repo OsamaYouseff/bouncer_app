@@ -14,8 +14,8 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
-
 const ratingValue = ref<number>(Math.trunc(props.product?.price % 5));
+// const toast = useToast();
 
 const addToCart = (event: Event, product: any) => {
   event.stopPropagation();
@@ -24,12 +24,11 @@ const addToCart = (event: Event, product: any) => {
 };
 
 const openMessage = () => {
-  $toast.success("Product added to cart successfully");
-  // ElNotification({
-  //   title: "Success",
-  //   message: "Product added to cart successfully",
-  //   type: "success",
-  // });
+  useToastify("Product added to cart successfully", {
+    type: "success",
+    autoClose: 1500,
+    position: ToastifyOption.POSITION.TOP_RIGHT,
+  });
 };
 </script>
 <template>

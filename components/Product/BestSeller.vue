@@ -18,7 +18,11 @@ const props = defineProps({
         Best Sellers
       </p>
 
-      <HomeSwiperWrapper class="max-w-[270px]" :slides="topProducts?.length">
+      <HomeSwiperWrapper
+        class="max-w-[270px]"
+        :slides="topProducts?.length"
+        :autoSwap="true"
+      >
         <Product
           v-for="product in topProducts"
           :key="product.id"

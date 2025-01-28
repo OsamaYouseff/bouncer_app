@@ -251,10 +251,10 @@ const { cart } = storeToRefs(cartStore);
 
 // handlers
 const openMessage = () => {
-  ElNotification({
-    title: "Success",
-    message: "Product added to cart successfully",
+  useToastify("Product added to cart successfully", {
     type: "success",
+    autoClose: 1500,
+    position: ToastifyOption.POSITION.TOP_RIGHT,
   });
 };
 

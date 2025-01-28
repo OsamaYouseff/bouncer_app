@@ -70,11 +70,11 @@ const { isLoading } = storeToRefs(productsStore);
 const amount = ref<number>(props.product.quantity || 1);
 
 // handlers
-const openMessage = (message: string) => {
-  ElNotification({
-    title: "Success",
-    message: message,
+const openMessage = (message: string = "No Message") => {
+  useToastify(message, {
     type: "success",
+    autoClose: 1500,
+    position: ToastifyOption.POSITION.TOP_RIGHT,
   });
 };
 
