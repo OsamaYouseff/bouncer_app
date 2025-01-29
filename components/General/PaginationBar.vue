@@ -1,21 +1,11 @@
-<template>
-  <div class="pagination-wrapper mx-auto w-full flex-center">
-    <!-- Pagination -->
-    <button
-      class="page-button"
+<template lang="pug">
+  
+  div(class="pagination-wrapper mx-auto w-full flex-center")
+    //-  Pagination 
+    button(class="page-button" :class="activePage == page ? 'active' : ''" :key="index" 
       v-for="(page, index) in 5"
-      @click="
-        () => {
-          emit('update:activePage', page);
-          activePage = page;
-        }
-      "
-      :class="activePage == page ? 'active' : ''"
-      :key="index"
-    >
-      {{ page }}
-    </button>
-  </div>
+      @click="handleActivePage(page)") {{ page }}
+    
 </template>
 
 <script lang="ts" setup>
@@ -30,6 +20,11 @@ const props = defineProps({
 const activePage = ref<number>(props.activePage || 1);
 
 const emit = defineEmits(["update:activePage"]);
+
+const handleActivePage = (page: number): void => {
+  emit("update:activePage", page);
+  activePage.value = page;
+};
 </script>
 
 <style scoped>

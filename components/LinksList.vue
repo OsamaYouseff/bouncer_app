@@ -5,7 +5,6 @@ const props = defineProps({
   },
 });
 
-
 watchEffect(() => {
   if (props.activeLink) {
     // console.log(props.activeLink);
@@ -13,83 +12,79 @@ watchEffect(() => {
 });
 </script>
 
-<template>
-  <div :class="{ show: props.activeLink }"
-    class="links flex-center absolute translate-y-10 rounded shadow-lg top-1/2 z-30 right-1/2 translate-x-1/2 w-[1029px] max-w-[90%] bg-[#fefefe]"
-    style="border-top: 3px solid #f0f3f4">
-    <div class="sections flex-wrap relative flex-between justify-start gap-5 grow p-10">
-      <span class="triangle"></span>
-      <div>
-        <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
-        <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li>
-            <NuxtLink> AirPort & Wireless </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> AppleCare </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Bags, Shells & Sleeves </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Business & Security </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Cables & Docks </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Cameras & Video </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Car & Travel </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Cases & Films </NuxtLink>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
-        <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li>
-            <NuxtLink> Charging Devices </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Connected Home </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Device Care </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Display & Graphic </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Fitness & Sport </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Headphones </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> HealthKit </NuxtLink>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h1 class="text-[18px] text-[#c0c8ce] mb-3">Category</h1>
-        <ul class="flex-col-start gap-5 flex-wrap h-[300px]">
-          <li>
-            <NuxtLink> Mice & Keyboards </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Music Creation </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink> Networking & Server </NuxtLink>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(:class="{ show: props.activeLink }" class="links flex-center absolute translate-y-10 rounded shadow-lg top-1/2 z-30 right-1/2 translate-x-1/2 w-[1029px] max-w-[90%] bg-[#fefefe]" 
+  style="border-top: 3px solid #f0f3f4")
+    
+    div(class="sections flex-wrap relative flex-between justify-start gap-5 grow p-10") 
+    
+      span.triangle 
+      
+      div
+        h1(class="text-[18px] text-[#c0c8ce] mb-3") Category
+        ul(class="flex-col-start gap-5 flex-wrap h-[300px]")
+          li
+            NuxtLink AirPort & Wireless 
+          
+          li
+            NuxtLink AppleCare 
+          
+          li
+            NuxtLink Bags, Shells & Sleeves 
+          
+          li
+            NuxtLink Business & Security 
+          
+          li
+            NuxtLink Cables & Docks 
+          
+          li
+            NuxtLink Cameras & Video 
+          
+          li
+            NuxtLink Car & Travel 
+          
+          li
+            NuxtLink Cases & Films 
+          
+      div
+        h1(class="text-[18px] text-[#c0c8ce] mb-3") Category
+        ul(class="flex-col-start gap-5 flex-wrap h-[300px]")
+          li
+            NuxtLink Charging Devices 
+          
+          li
+            NuxtLink Connected Home 
+          
+          li
+            NuxtLink Device Care 
+          
+          li
+            NuxtLink Display & Graphic 
+          
+          li
+            NuxtLink Fitness & Sport 
+          
+          li
+            NuxtLink Headphones 
+          
+          li
+            NuxtLink HealthKit 
+          
+        
+      
+      div
+        h1(class="text-[18px] text-[#c0c8ce] mb-3") Category
+        ul(class="flex-col-start gap-5 flex-wrap h-[300px]")
+          li
+            NuxtLink Mice & Keyboards 
+          
+          li
+            NuxtLink Music Creation 
+          
+          li
+            NuxtLink Networking & Server 
+          
 </template>
 
 <style scoped>
@@ -104,7 +99,7 @@ watchEffect(() => {
   z-index: 100;
 }
 
-.sections>div {
+.sections > div {
   flex-grow: 1;
   height: 100%;
   min-height: 200px;

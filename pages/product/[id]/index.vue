@@ -49,13 +49,16 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+
 import NavigationPath from "@/components/General/NavigationPath.vue";
 import Product from "~/components/Home/Content/Product.vue";
-import { onMounted } from "vue";
+import ProductDetails from "@/components/Product/productDetails.vue";
+import LoaderComponent from "@/components/LoaderComponent.vue";
 // pinia store
 import { storeToRefs } from "pinia";
 import { useProductsStore } from "@/composables/useProducts";
-import { useRouter } from "vue-router";
 
 const productsStore = useProductsStore();
 const { product, products, isLoading } = storeToRefs(productsStore);

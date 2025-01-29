@@ -10,27 +10,26 @@ const updateValue = (min: number, max: number) => {
 };
 </script>
 
-<template>
-  <!-- Accessories Filter -->
+<template lang="pug">
+  //-  Accessories Filter 
 
-  <div
-    class="accessories-filter min-h-full rounded-md min-w-[270px] max-w-[270px]"
-    style="background: #f6f7f8; padding: 20px"
-  >
-    <h2 class="mb-6 text-[18px]">PRICES</h2>
-    <div class="flex-between mb-4">
-      <span>Ranger:</span>
-      <span>${{ minPrice }} - ${{ maxPrice }}</span>
-    </div>
-    <div>
-      <Slider
+  div(class="accessories-filter min-h-full rounded-md min-w-[270px] max-w-[270px]"
+      style="background: #f6f7f8; padding: 20px")
+    
+    h2(class="mb-6 text-[18px]") PRICES 
+    
+    div(class="flex-between mb-4")  
+      span Ranger: 
+      span ${{ minPrice }} - ${{ maxPrice }}
+    
+    div
+      Slider(
         :minPrice="minPrice"
         :maxPrice="maxPrice"
         @update:minPrice="updateValue($event, maxPrice)"
         @update:maxPrice="updateValue(minPrice, $event)"
-      />
-    </div>
-  </div>
+      )
+
 </template>
 
 <style scoped>

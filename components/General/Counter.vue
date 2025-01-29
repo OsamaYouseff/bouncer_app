@@ -1,53 +1,18 @@
-<template>
-  <div
-    class="counter border-[#f6f7f8] border-2 rounded-md text-gray-500 max-w-[142px]"
-  >
-    <button
-      :disabled="quantity <= 1"
-      class="btn"
-      @click="
-        () => {
-          if (quantity <= 1) return;
-          quantity--;
-          emit('update:quantity', quantity);
-        }
-      "
-    >
-      -
-    </button>
-    <input
-      class="text-center"
-      type="number"
-      contenteditable="true"
-      name="quantity"
-      v-model="quantity"
-      @change="
-        () => {
-          if (quantity >= 1 && quantity <= 10)
-            emit('update:quantity', quantity);
-          else quantity = 1;
-        }
-      "
-    />
-    <button
-      class="btn"
-      :disabled="quantity >= 10"
-      @click="
-        () => {
-          if (quantity >= 10) return;
-          quantity++;
-          emit('update:quantity', quantity);
-        }
-      "
-    >
-      +
-    </button>
-  </div>
+<template lang="pug">
+    
+  div(class="counter border-[#f6f7f8] border-2 rounded-md text-gray-500 max-w-[142px]")
+    button(:disabled="quantity <= 1" class="btn" @click="handelIncrease") -
+    
+    input(class="text-center" type="number" contenteditable="true" name="quantity" v-model="quantity"
+           @change="changeQuantity")
+
+    button(:disabled="quantity >= 10" class="btn" @click="handelDecrease") +
+
+  
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-// Validate input for minimum value of 1
 
 const props = defineProps({
   quantity: {
@@ -58,6 +23,23 @@ const props = defineProps({
 const quantity = ref(props.quantity);
 
 const emit = defineEmits(["update:quantity"]);
+
+const handelIncrease = () => {
+  if (quantity.value <= 1) return;
+  quantity.value--;
+  emit("update:quantity", quantity.value);
+};
+const handelDecrease = () => {
+  if (quantity.value >= 10) return;
+  quantity.value++;
+  emit("update:quantity", quantity.value);
+};
+
+const changeQuantity = () => {
+  if (quantity.value >= 1 && quantity.value <= 10)
+    emit("update:quantity", quantity.value);
+  else quantity.value = 1;
+};
 </script>
 
 <style scoped>

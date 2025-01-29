@@ -1,21 +1,14 @@
-<template>
-  <div class="slider-demo-block">
-    <div class="py-2 w-full">
-      <input
-        v-model="value"
-        @change="
-          (event) => {
-            emit('update:maxPrice', event?.target?.value);
-          }
-        "
-        max="5000"
-        min="0"
-        step="100"
-        type="range"
-        class="h-2 w-full cursor-grab appearance-none rounded-full bg-gray-200 disabled:cursor-not-allowed"
-      />
-    </div>
-  </div>
+<template lang="pug">
+  //- Slider
+  div(class="slider-demo-block")
+    
+    div(class="py-2 w-full")
+      
+      input(v-model="value" max="5000" min="0" step="100" type="range"
+        @change="(event) => { emit('update:maxPrice', event?.target?.value)}"
+        class="h-2 w-full cursor-grab appearance-none rounded-full bg-gray-200 disabled:cursor-not-allowed")
+
+
 </template>
 
 <script lang="ts" setup>

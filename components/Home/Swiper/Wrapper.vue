@@ -35,32 +35,22 @@ if (props.autoSwap) {
 }
 </script>
 
-<template>
-  <div class="inner-slider translate-x-2">
-    <div
-      class="slides"
-      :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-    >
-      <!-- Slide Component -->
+<template lang="pug">
+  
+  div(class="inner-slider translate-x-2") 
+    
+    div(class="slides" :style="{ transform: `translateX(-${currentSlide * 100}%)` }")    
+      //-  Slide Component
       <slot />
-    </div>
-
-    <!-- Forward Arrow -->
-    <button
-      class="absolute flex-center w-10 h-10 left-0 top-1/2 translate-x-0 z-30"
-      @click="prevSlide"
-    >
+  
+    //-  Forward Arrow
+    button(class="absolute flex-center w-10 h-10 left-0 top-1/2 translate-x-0 z-30" @click="prevSlide")
       <img src="@/assets/icons/arrow-left.svg" alt="left-arrow-icon" />
-    </button>
-
-    <!-- Backward Arrow -->
-    <button
-      class="absolute flex-center w-10 h-10 md:right-0 right-2 top-1/2 z-30"
-      @click="nextSlide"
-    >
+    
+    //-  Backward Arrow
+    button(class="absolute flex-center w-10 h-10 md:right-0 right-2 top-1/2 z-30" @click="nextSlide")
       <img src="@/assets/icons/arrow-right.svg" alt="right-arrow-icon" />
-    </button>
-  </div>
+    
 </template>
 
 <style scoped>

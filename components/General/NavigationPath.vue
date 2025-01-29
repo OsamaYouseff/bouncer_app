@@ -1,7 +1,5 @@
-<template>
-  <div class="nav-path text-black flex-center gap-3">
-    <slot />
-  </div>
+<template lang="pug">
+  div(class="nav-path text-black flex-center gap-3") <slot />
 </template>
 
 <style>

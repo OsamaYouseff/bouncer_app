@@ -1,57 +1,30 @@
-<template>
-  <!-- Cart Product  -->
-  <div class="table-row-group cursor-pointer hover:bg-[#fff7f1] rounded-md">
-    <div class="table-row border-b-2">
-      <!-- product name & img -->
-      <div class="table-cell py-5 pl-1">
-        <div class="flex">
-          <button
-            @click="handleDeleteItem"
-            class="remove-icon mr-1 flex-center cursor-pointer"
-            style="
-              background: #fff7f8;
-              border-radius: 50%;
-              width: 28px;
-              height: 28px;
-            "
-          >
-            <img
-              class="rounded-full w-[12px]"
-              src="@/assets/icons/x.svg"
-              alt="close-icon"
-            />
-          </button>
-          <div class="flex" @click="navigateTo(`/product/${product.id}`)">
-            <div class="img-container max-w-[130px] max-h-[130px]">
-              <img
-                class="max-w-[130px] max-h-[130px] rounded-md"
-                :src="props.product.images[0]"
-                alt="product-img"
-              />
-            </div>
-            <div class="name">
-              {{ props.product.name }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- price -->
-      <div class="price table-cell">
-        ${{ props.product.price * props.product.quantity }}
-      </div>
+<template lang="pug">
+  //-  Cart Product 
 
-      <!-- quantity -->
+  div(class="table-row-group cursor-pointer hover:bg-[#fff7f1] rounded-md")
+    div(class="table-row border-b-2")
+      //-  product name & img
+      div.table-cell.py-5.pl-1
+        div.flex
+          button(@click="handleDeleteItem" class="remove-icon mr-1 flex-center cursor-pointer"
+                style=" background: #fff7f8; border-radius: 50%; width: 28px; height: 28px;")
+            img(class="rounded-full w-[12px]" src="@/assets/icons/x.svg" alt="close-icon")
+          
+          div(class="img-container max-w-[130px] max-h-[130px]")      
+            img(:src="props.product.images[0]" alt="product-img" class="max-w-[130px] max-h-[130px] rounded-md")
 
-      <div class="quantity table-cell">
-        <GeneralCounter
-          :quantity="amount"
-          @update:quantity="handleChangeAmount"
-        />
-      </div>
-      <!-- unit price -->
-      <div class="unit-price table-cell">${{ props.product.price }}</div>
-    </div>
-  </div>
+          div.name {{ props.product.name }}
+      
+      //-  price
+      div(class="price table-cell") ${{ props.product.price * props.product.quantity }}
+      
+      //-  quantity
+      div.quantity.table-cell 
+        GeneralCounter( :quantity="amount" @update:quantity="handleChangeAmount")
+      
+      //-  unit price 
+      div(class="unit-price table-cell") ${{ props.product.price }}
+
 </template>
 
 <script lang="ts" setup>
@@ -74,6 +47,7 @@ const openMessage = (message: string = "No Message") => {
   useToastify(message, {
     type: "success",
     autoClose: 1500,
+    theme: "light",
     position: ToastifyOption.POSITION.TOP_RIGHT,
   });
 };

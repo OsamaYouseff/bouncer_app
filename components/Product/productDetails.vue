@@ -254,6 +254,7 @@ const openMessage = () => {
   useToastify("Product added to cart successfully", {
     type: "success",
     autoClose: 1500,
+    theme: "light",
     position: ToastifyOption.POSITION.TOP_RIGHT,
   });
 };

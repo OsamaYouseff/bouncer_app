@@ -23,63 +23,39 @@ const updateLimit = (limit: number) => {
 };
 </script>
 
-<template>
-  <!-- Accessories Filter -->
-  <div
-    class="filter-bar rounded-md flex-between grow gap-4 flex-wrap lg:max-w-full"
-    style="background: #f6f7f8; padding: 20px"
-  >
-    <!-- items limit -->
-    <div class="flex grow gap-6">
-      <span class="min-w-[60px]">
-        <span class="items-num">{{ productsCount }}</span> Items
-      </span>
-      <div class="flex-between gap-3">
-        <span>Show</span>
-        <GeneralSelectMenu
-          :options="['8', '12', '16', '20']"
-          style="width: 80px; height: 38px"
-          @update:itemsLimit="updateLimit"
-        />
-      </div>
-    </div>
+<template lang="pug">
+  //- Accessories Filter
+  div(class="filter-bar rounded-md flex-between grow gap-4 flex-wrap lg:max-w-full"
+      style="background: #f6f7f8; padding: 20px")
+    //- items limit
+    
+    div(class="flex grow gap-6")
+      span(class="min-w-[60px]")
+        span(class="items-num") {{ productsCount }} Items
+      
+      div(class="flex-between gap-3")
+        span Show
+        GeneralSelectMenu(@update:itemsLimit="updateLimit" :options="['8', '12', '16', '20']" style="width: 80px; height: 38px")
+    
     <slot />
-    <div class="flex-between gap-3">
-      <span class="min-w-[68px]"> Sorted By</span>
-      <!-- menu -->
-      <GeneralSelectMenu
-        :options="[
-          'Newest',
-          'Oldest',
-          'Price: Low to High',
-          'Price: High to Low',
-        ]"
-        style="width: 145px; height: 38px"
-      />
-    </div>
+    div(class="flex-between gap-3")
+      span(class="min-w-[68px]") Sorted By
+      //- Menu
+      GeneralSelectMenu(
+          :options="['Newest','Oldest','Price: Low to High','Price: High to Low',]"
+          style="width: 145px; height: 38px")
 
-    <!-- view options -->
-    <div class="view-options flex-end gap-2">
-      <button
-        @click="emit('update:viewOption', 'grid')"
-        class="hover:bg-white max-w-[38px] flex-center p-2 rounded"
-      >
-        <img
-          :src="props.activeView == 'grid' ? activeGrid : grid"
-          alt="grid-icon"
-        />
-      </button>
-      <button
-        @click="emit('update:viewOption', 'list')"
-        class="hover:bg-white max-w-[38px] flex-center p-2 rounded"
-      >
-        <img
-          :src="props.activeView == 'list' ? activeList : list"
-          alt="list-icon"
-        />
-      </button>
-    </div>
-  </div>
+    //- view options
+    div(class="view-options flex-end gap-2")
+      button(@click="emit('update:viewOption', 'grid')" 
+              class="hover:bg-white max-w-[38px] flex-center p-2 rounded")
+        img(:src="props.activeView == 'grid' ? activeGrid : grid" alt="grid-icon")
+          
+      button(@click="emit('update:viewOption', 'list')"
+              class="hover:bg-white max-w-[38px] flex-center p-2 rounded")
+        img(:src="props.activeView == 'list' ? activeList : list" alt="list-icon")
+          
+    
 </template>
 
 <style scoped>
@@ -91,5 +67,4 @@ button {
 span {
   font-size: 14px;
 }
-
 </style>
