@@ -17,11 +17,11 @@ const ratingValue = ref<number>(4);
           
           img(class="lg:max-w-[200px] max-h-[146px] sm:min-h-[100px]" src="@/assets/images/product1.png" alt="products-img")
             
-        div(class="dis lg:w-[200px]") 
+        div(class="dis lg:w-[200px]" style="display: flex; flex-direction: column; align-items: flex-start;" ) 
           p(class="title mb-2 text-[14px] text-[#262626] max-w-[132px]") Apple Macbook Pro
           
-          div(class="rating") 
-            CustomRating(:rating="ratingValue") 
+          div(class="rating mb-2") 
+            CustomRating(:rating="ratingValue" class="w-fit") 
           
           div(class="price flex gap-2") 
             p(class="curr text-[#ea4251]") $499 
@@ -40,10 +40,10 @@ const ratingValue = ref<number>(4);
             src="@/assets/images/product3.png"
             alt="products-img")
 
-        div(class="dis lg:w-[200px]") 
+        div(class="dis lg:w-[200px]" style="display: flex; flex-direction: column; align-items: flex-start;") 
           p(class="title mb-2 text-[14px] text-[#262626] max-w-[132px]") H-Squared tvTray
           
-          div(class="rating") 
+          div(class="rating mb-2") 
             CustomRating(:rating="ratingValue" ) 
           
           div(class="price flex gap-2") 
@@ -63,9 +63,9 @@ const ratingValue = ref<number>(4);
             src="@/assets/images/product2.png"
             alt="products-img")
             
-        div(class="dis lg:w-[200px]") 
+        div(class="dis lg:w-[200px]" style="display: flex; flex-direction: column; align-items: flex-start;") 
           p(class="title mb-2 text-[14px] text-[#262626] max-w-[132px]" ) Netatmo Rain Gauge
-          div(class="rating") 
+          div(class="rating mb-2") 
             CustomRating(:rating="ratingValue" ) 
           
           div(class="price flex gap-2") 

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="flex items-center flex")
+  div(class="flex items-center flex-center")
     svg(v-for="index in rating" class="w-3 h-3 text-yellow-300 ms-1" aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20")
       

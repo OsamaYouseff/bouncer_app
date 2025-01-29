@@ -1,13 +1,13 @@
 <template lang="pug">
   //-  Main modal 
-  div(:class="centerDialogVisible ? 'flex' : 'hidden'" tabindex="-1" aria-hidden="true" class="message-popup pt-6 px-5 border-[1px] border-[#f6f7f8] sm:max-w-[95%] md:max-w-[1000px] fixed z-50 justify-center items-center w-full h-[calc(100%-1rem)] max-h-full bg-white rounded-md"
+  div(:class="centerDialogVisible ? 'flex' : 'hidden'" tabindex="-1" aria-hidden="true" 
+  class="message-popup pt-6 px-5 border-[1px] border-[#f6f7f8] max-w-[90%] lg:max-w-[1000px] fixed z-50 justify-center items-center w-full h-[calc(100%-1rem)] max-h-full bg-white rounded-md"
     style=" height: fit-content; top: 50%; left: 50%; transform: translate(-50%, -50%);")
+    
     //-  close btn 
     span(@click="centerDialogVisible = false" class="close-btn absolute flex-center -top-5 -right-3 cursor-pointer p-3 hover:bg-red-600 bg-black w-10 h-10 text-white rounded-full flex-center")
       span(class="text-lg") ✕ 
-        
-   
-
+    
     div(class="flex lg:flex-row flex-col-reverse") 
       div(class="content grow") 
         h1(class="text-[48px] text-center md:mb-4 mt-3") Newsletter
@@ -47,5 +47,3 @@ onMounted(() => {
   }, 5000);
 });
 </script>
-
-<style scoped></style>

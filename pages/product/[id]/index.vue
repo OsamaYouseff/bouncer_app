@@ -1,56 +1,34 @@
-<template>
-  <section class="product-section container mx-auto pb-10">
-    <NavigationPath>
-      <NuxtLink
-        to="/"
-        class="active cursor-pointer text-[11px] lg:text-[14px] text-[#c0c8ce]"
-        >Home</NuxtLink
-      >
-      <span>/</span>
-      <NuxtLink
-        to="/#best-seller"
-        class="active cursor-pointer text-[11px] lg:text-[14px] text-[#c0c8ce]"
-      >
-        Products
-      </NuxtLink>
-      <span>/</span>
-      <NuxtLink class="text-[11px] lg:text-[14px] text-[#c0c8ce]">{{
-        product?.title
-      }}</NuxtLink>
-    </NavigationPath>
+<template lang="pug">
+  section(class="product-section container mx-auto pb-10") 
+    NavigationPath
+      NuxtLink(to="/" class="active cursor-pointer text-[11px] lg:text-[14px] text-[#c0c8ce]") Home
+      span /
+      
+      NuxtLink(to="/#best-seller" class="active cursor-pointer text-[11px] lg:text-[14px] text-[#c0c8ce]"
+      ) Products
+      span /
+      
+      NuxtLink(class="text-[11px] lg:text-[14px] text-[#c0c8ce]") {{ product?.title }}
+    
+    LoaderComponent( v-if="isLoading" )
 
-    <LoaderComponent v-if="isLoading" />
+    div(v-else)
+      ProductDetails(:product="product" :topProducts="products.filter((p) => p.id != product?.id).slice(0, 4)")
+      
+      //- Related Products
+      div.related-product-wrapper.mt-10
+        h2.text-center.text-3xl.font-medium.uppercase.mb-5 Related Products
 
-    <div v-else>
-      <ProductDetails
-        :product="product"
-        :topProducts="products.filter((p) => p.id != product?.id).slice(0, 4)"
-      />
+        div(class="related-products lg:ml-0 ml-2 flex-between md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-3")
+         
+          Product(v-for="product in products.filter((p) => p.id != product?.id).slice(0, 5)" 
+          :key="product.id" :product="product" )
+          
 
-      <!-- Related Products -->
-      <div class="related-product-wrapper mt-10">
-        <h2 class="text-center text-3xl font-medium uppercase mb-5">
-          Related Products
-        </h2>
-        <div
-          class="related-products lg:ml-0 ml-2 flex-between md:justify-center md:flex-wrap lg:overflow-x-hidden overflow-x-scroll p-8 gap-3"
-        >
-          <Product
-            v-for="product in products
-              .filter((p) => p.id != product?.id)
-              .slice(0, 5)"
-            :key="product.id"
-            :product="product"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from "vue";
-import { useRouter } from "vue-router";
 
 import NavigationPath from "@/components/General/NavigationPath.vue";
 import Product from "~/components/Home/Content/Product.vue";

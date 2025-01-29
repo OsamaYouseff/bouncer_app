@@ -1,69 +1,43 @@
-<template>
-  <section class="blog container mx-auto md:px-0 px-3">
-    <h1 class="text-center mb-10 text-[30px] font-medium">LATEST ARTICLES</h1>
-    <div class="drawer mb-4 text-center">
-      <button
-        class="bg-white text-[14px] min-w-[340px] z-auto h-[40px] px-3 border-[1px] border-[#f6f7f8] rounded-md shadow-lg"
-        @click="handleOpenDrawer"
-      >
-        Top Articles
-      </button>
-      <GeneralDrawer
-        :showDrawer="showDrawer"
-        @update:closeDrawer="showDrawer = false"
-      >
-        <SideBar />
-      </GeneralDrawer>
-    </div>
-    <!-- Blog Content -->
-    <div
-      class="content-wrapper flex-center gap-6"
-      style="align-items: flex-start"
-    >
-      <div class="articles mb-10">
-        <!-- Article Box  -->
-        <div
-          v-for="(article, index) in articles"
-          :key="index"
-          class="article cursor-pointer hover:shadow-lg max-w-[840px]"
-          @click="navigateTo(`/article/${article.id}`)"
-        >
-          <div class="img-container mb-10">
-            <img class="max-h-[370px]" :src="article.img" alt="blog-img" />
-          </div>
-
-          <div class="des py-10">
-            <div class="date-comments gap-5 flex mb-3">
-              <button
-                class="comments border-none text-sm"
-                style="color: var(--primary)"
-              >
-                {{ 2 }}
-                Comments
-              </button>
-
-              <div class="date text-sm font-medium">DEC 15 2018</div>
-            </div>
-            <h2 class="text-3xl font-medium mb-3" style="color: var(--primary)">
-              Dolor sit amet, consectetur adipiscing elit, sed do
-            </h2>
-            <p class="text-sm leading-7 max-w-[760px]">
-              Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida
-              et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-              adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada
-              tincidunt.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <SideBar class="side-bar" />
-    </div>
-    <PaginationBar class="mb-[70px]" />
-  </section>
+<template lang="pug">
+  section(class="blog container mx-auto md:px-0 px-3")
+    
+    h1(class="text-center mb-10 text-[30px] font-medium") LATEST ARTICLES
+    
+    div(class="drawer mb-4 text-center")
+      
+      button(class="bg-white text-[14px] min-w-[340px] z-auto h-[40px] px-3 border-[1px] border-[#f6f7f8] rounded-md shadow-lg" @click="handleOpenDrawer") Top Articles
+      
+      GeneralDrawer(:showDrawer="showDrawer" @update:closeDrawer="showDrawer = false")
+        SideBar 
+      
+    //- Blog Content 
+    div(class="content-wrapper flex-center gap-6" style="align-items: flex-start") 
+      
+      div.articles.mb-10
+        
+        //- Article Box  
+        div(v-for="(article, index) in articles" :key="index" class="article cursor-pointer hover:shadow-lg max-w-[840px]" @click="navigateTo(`/article/${article.id}`)")
+          
+          div.img-container.mb-10
+            img(class="max-h-[370px]" :src="article.img" alt="blog-img")
+          
+          div.des.py-10
+            
+            div.date-comments.gap-5.flex.mb-3
+              
+              button(class="comments border-none text-sm" style="color: var(--primary)") {{ 2 }} Comments
+              div.date.text-sm.font-medium DEC 15 2018
+            
+            h2(class="text-3xl font-medium mb-3" style="color: var(--primary)") Dolor sit amet, consectetur adipiscing elit, sed do
+            
+            p(class="text-sm leading-7 max-w-[760px]") Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt.
+      
+      SideBar.side-bar
+    
+    PaginationBar(class="mb-[70px]") 
+  
 </template>
+
 <script lang="ts" setup>
 import { reactive } from "vue";
 import PaginationBar from "@/components/General/PaginationBar.vue";
