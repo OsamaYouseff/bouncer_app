@@ -1,16 +1,3 @@
-<script lang="ts" setup>
-import { ref } from "vue";
-import CustomRating from "./CustomRating.vue";
-
-const props = defineProps({
-  product: {
-    type: Object,
-  },
-});
-
-const ratingValue = ref<number>(Math.trunc(props.product?.price % 5));
-</script>
-
 <template lang="pug">
   //-  product box 
   div(@click="navigateTo(`/product/${product?.id}`)"
@@ -55,3 +42,16 @@ const ratingValue = ref<number>(Math.trunc(props.product?.price % 5));
           img(src="@/assets/icons/heart.svg" alt="heart-icon")
              
 </template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+import CustomRating from "./CustomRating.vue";
+
+const props = defineProps({
+  product: {
+    type: Object,
+  },
+});
+
+const ratingValue = ref<number>(Math.trunc(props.product?.price % 5));
+</script>

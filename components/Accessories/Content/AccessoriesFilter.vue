@@ -1,17 +1,3 @@
-<script setup lang="ts">
-const activeAccessories = ref<string>("Apple Card");
-
-const accessories = [
-  "Apple Card",
-  "Air pods & wireless",
-  "Cables & Docks",
-  "Cases & Films",
-  "Charging Devices",
-  "Connected home",
-  "Headphones",
-];
-</script>
-
 <template lang="pug">
   //- Accessories Filter
   div(class="accessories-filter min-h-full rounded-md min-w-[270px] max-w-[270px]" style="background: #f6f7f8; padding: 20px")
@@ -25,6 +11,20 @@ const accessories = [
         span {{ accessory.length }}
 
 </template>
+
+<script setup lang="ts">
+const activeAccessories = ref<string>("Apple Card");
+
+const accessories = [
+  "Apple Card",
+  "Air pods & wireless",
+  "Cables & Docks",
+  "Cases & Films",
+  "Charging Devices",
+  "Connected home",
+  "Headphones",
+];
+</script>
 
 <style scoped>
 button {

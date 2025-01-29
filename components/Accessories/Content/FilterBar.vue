@@ -1,28 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import list from "@/assets/icons/list.svg";
-import activeList from "@/assets/icons/list-a.svg";
-import grid from "@/assets/icons/grid.svg";
-import activeGrid from "@/assets/icons/grid-a.svg";
-
-const props = defineProps({
-  activeView: {
-    type: String,
-  },
-  handleUpdateLimit: {
-    type: Function,
-  },
-});
-
-const productsCount = ref<number>(8);
-const emit = defineEmits(["update:viewOption", "update:itemsLimit"]);
-
-const updateLimit = (limit: number) => {
-  productsCount.value = limit;
-  props.handleUpdateLimit?.(limit);
-};
-</script>
-
 <template lang="pug">
   //- Accessories Filter
   div(class="filter-bar rounded-md flex-between grow gap-4 flex-wrap lg:max-w-full"
@@ -57,6 +32,31 @@ const updateLimit = (limit: number) => {
           
     
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import list from "@/assets/icons/list.svg";
+import activeList from "@/assets/icons/list-a.svg";
+import grid from "@/assets/icons/grid.svg";
+import activeGrid from "@/assets/icons/grid-a.svg";
+
+const props = defineProps({
+  activeView: {
+    type: String,
+  },
+  handleUpdateLimit: {
+    type: Function,
+  },
+});
+
+const productsCount = ref<number>(8);
+const emit = defineEmits(["update:viewOption", "update:itemsLimit"]);
+
+const updateLimit = (limit: number) => {
+  productsCount.value = limit;
+  props.handleUpdateLimit?.(limit);
+};
+</script>
 
 <style scoped>
 button {

@@ -1,17 +1,3 @@
-<script setup lang="ts">
-const props = defineProps({
-  activeLink: {
-    type: Boolean,
-  },
-});
-
-watchEffect(() => {
-  if (props.activeLink) {
-    // console.log(props.activeLink);
-  }
-});
-</script>
-
 <template lang="pug">
   div(:class="{ show: props.activeLink }" class="links flex-center absolute translate-y-10 rounded shadow-lg top-1/2 z-30 right-1/2 translate-x-1/2 w-[1029px] max-w-[90%] bg-[#fefefe]" 
   style="border-top: 3px solid #f0f3f4")
@@ -86,6 +72,20 @@ watchEffect(() => {
             NuxtLink Networking & Server 
           
 </template>
+
+<script setup lang="ts">
+const props = defineProps({
+  activeLink: {
+    type: Boolean,
+  },
+});
+
+watchEffect(() => {
+  if (props.activeLink) {
+    // console.log(props.activeLink);
+  }
+});
+</script>
 
 <style scoped>
 .links {

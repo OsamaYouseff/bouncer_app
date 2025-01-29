@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import slideImg from "@/assets/images/slider.jpg";
-
-const slides = [
-  { image: slideImg, alt: "Slide 1" },
-  { image: slideImg, alt: "Slide 2" },
-  { image: slideImg, alt: "Slide 3" },
-];
-</script>
-
 <template lang="pug">
   section(class="slider md:h-[652px] mb-[165px]") 
     div(class="container mx-auto lg:max-w-[1125px] grow relative flex-center") 
@@ -57,6 +47,16 @@ const slides = [
           
         
 </template>
+
+<script setup lang="ts">
+import slideImg from "@/assets/images/slider.jpg";
+
+const slides = [
+  { image: slideImg, alt: "Slide 1" },
+  { image: slideImg, alt: "Slide 2" },
+  { image: slideImg, alt: "Slide 3" },
+];
+</script>
 
 <style scoped>
 .slider {

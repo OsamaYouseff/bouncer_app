@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const activeBrand = ref<string>("Apple");
-
-const brands = ["Apple", "LG", "Samsung", "Xiaomi"];
-</script>
-
 <template lang="pug">
   //- Brand Filter
   div(class="brand-filter min-h-full rounded-md min-w-[270px] max-w-[270px]"
@@ -20,6 +14,11 @@ const brands = ["Apple", "LG", "Samsung", "Xiaomi"];
         span {{ brand.length * 14 }}
 
 </template>
+
+<script setup lang="ts">
+const activeBrand = ref<string>("Apple");
+const brands = ["Apple", "LG", "Samsung", "Xiaomi"];
+</script>
 
 <style scoped>
 button {

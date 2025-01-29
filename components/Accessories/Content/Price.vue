@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import Slider from "./Slider.vue";
-
-const minPrice = ref<number>(10.99);
-const maxPrice = ref<number>(1000.99);
-
-const updateValue = (min: number, max: number) => {
-  minPrice.value = min;
-  maxPrice.value = max;
-};
-</script>
-
 <template lang="pug">
   //-  Accessories Filter 
 
@@ -31,6 +19,18 @@ const updateValue = (min: number, max: number) => {
       )
 
 </template>
+
+<script setup lang="ts">
+import Slider from "./Slider.vue";
+
+const minPrice = ref<number>(10.99);
+const maxPrice = ref<number>(1000.99);
+
+const updateValue = (min: number, max: number) => {
+  minPrice.value = min;
+  maxPrice.value = max;
+};
+</script>
 
 <style scoped>
 button {

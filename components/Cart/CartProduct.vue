@@ -1,6 +1,5 @@
 <template lang="pug">
   //-  Cart Product 
-
   div(class="table-row-group cursor-pointer hover:bg-[#fff7f1] rounded-md")
     div(class="table-row border-b-2")
       //-  product name & img

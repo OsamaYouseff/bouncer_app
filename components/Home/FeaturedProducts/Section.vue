@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import CustomRating from "~/components/General/CustomRating.vue";
-
-const ratingValue = ref<number>(4);
-</script>
-
 <template lang="pug">
   section(class="py-20 px-4")
     h1(class="text-center mb-10 text-[30px] font-medium") FEATURED PRODUCTS
@@ -72,8 +66,9 @@ const ratingValue = ref<number>(4);
             p(class="curr text-[#ea4251]") $499
             p(class="prev text-[#c0c8ce] line-through") $599
           
-        
-      
-    
-  
 </template>
+
+<script setup lang="ts">
+import CustomRating from "~/components/General/CustomRating.vue";
+const ratingValue = ref<number>(4);
+</script>

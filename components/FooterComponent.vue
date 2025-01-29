@@ -1,4 +1,3 @@
-<script lang="ts" setup></script>
 <template lang="pug">
   footer(class="border-t py-10") 
     div(class="container mx-auto") 

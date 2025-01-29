@@ -1,3 +1,21 @@
+<template lang="pug">
+  
+  div(class="inner-slider translate-x-2") 
+    
+    div(class="slides" :style="{ transform: `translateX(-${currentSlide * 100}%)` }")    
+      //-  Slide Component
+      <slot />
+  
+    //-  Forward Arrow
+    button(class="absolute flex-center w-10 h-10 left-0 top-1/2 translate-x-0 z-30" @click="prevSlide")
+      <img src="@/assets/icons/arrow-left.svg" alt="left-arrow-icon" />
+    
+    //-  Backward Arrow
+    button(class="absolute flex-center w-10 h-10 md:right-0 right-2 top-1/2 z-30" @click="nextSlide")
+      <img src="@/assets/icons/arrow-right.svg" alt="right-arrow-icon" />
+    
+</template>
+
 <script setup>
 import { ref } from "vue";
 import slideImg from "@/assets/images/slider.jpg";
@@ -34,24 +52,6 @@ if (props.autoSwap) {
   }, 3000);
 }
 </script>
-
-<template lang="pug">
-  
-  div(class="inner-slider translate-x-2") 
-    
-    div(class="slides" :style="{ transform: `translateX(-${currentSlide * 100}%)` }")    
-      //-  Slide Component
-      <slot />
-  
-    //-  Forward Arrow
-    button(class="absolute flex-center w-10 h-10 left-0 top-1/2 translate-x-0 z-30" @click="prevSlide")
-      <img src="@/assets/icons/arrow-left.svg" alt="left-arrow-icon" />
-    
-    //-  Backward Arrow
-    button(class="absolute flex-center w-10 h-10 md:right-0 right-2 top-1/2 z-30" @click="nextSlide")
-      <img src="@/assets/icons/arrow-right.svg" alt="right-arrow-icon" />
-    
-</template>
 
 <style scoped>
 .inner-slider {

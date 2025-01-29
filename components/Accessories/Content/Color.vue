@@ -1,8 +1,3 @@
-<script setup lang="ts">
-const Colors = ["Blue", "Red", "Green", "Orange", "Purple", "Black"];
-const activeColor = ref<string>("Blue");
-</script>
-
 <template lang="pug">
   //- Accessories Filter
 
@@ -19,6 +14,11 @@ const activeColor = ref<string>("Blue");
         span(class="child" :style="{ background: color }")
   
 </template>
+
+<script setup lang="ts">
+const Colors = ["Blue", "Red", "Green", "Orange", "Purple", "Black"];
+const activeColor = ref<string>("Blue");
+</script>
 
 <style scoped>
 button {

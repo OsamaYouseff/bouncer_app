@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import ArticleBox from "./ArticleBox.vue";
-
-const tags: string[] = [
-  "Promo",
-  "Holidays",
-  "Gift",
-  "Christmas",
-  "Giveaway",
-  "Tips",
-  "New Year",
-];
-</script>
-
 <template lang="pug">
   
   sidebar(style="width: 270px")
@@ -37,6 +23,20 @@ const tags: string[] = [
             p(class="text-xl font-thin text-gray-500") $299
             
 </template>
+
+<script setup lang="ts">
+import ArticleBox from "./ArticleBox.vue";
+
+const tags: string[] = [
+  "Promo",
+  "Holidays",
+  "Gift",
+  "Christmas",
+  "Giveaway",
+  "Tips",
+  "New Year",
+];
+</script>
 
 <style scoped>
 h1,

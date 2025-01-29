@@ -7,6 +7,4 @@
       
       button(class="h-[60px] w-[120px] rounded-[5px] border-[1px] py-3 px-4 text-white border-[#f6f7f8] text-[14px]" style="background: var(--primary)") Search
       
-    
-  
 </template>

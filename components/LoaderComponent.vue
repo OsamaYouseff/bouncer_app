@@ -1,4 +1,3 @@
-<script setup lang="ts"></script>
 <template lang="pug">
   div(class="wrapper w-screen h-screen flex-center fixed z-50 top-0 left-0 bg-white")
   
@@ -15,5 +14,4 @@
         
       span.sr-only Loading...
    
- 
 </template>

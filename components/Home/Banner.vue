@@ -1,10 +1,3 @@
-<script setup>
-const props = defineProps({
-  maxHeight: {
-    type: String,
-  },
-});
-</script>
 <template lang="pug">
   <section class="banner max-w-full flex-center px-6" style="background: var(--primary)">
     div(:class="`max-h-[${props.maxHeight}]`" class="container sm:justify-center lg:w-[1170px] mx-auto h-[400px] lg:h-[600px] flex lg:justify-between") 
@@ -22,6 +15,15 @@ const props = defineProps({
     
   </section>
 </template>
+
+<script setup>
+const props = defineProps({
+  maxHeight: {
+    type: String,
+  },
+});
+</script>
+
 <style scoped>
 .img-container {
   background: url("@/assets/images/banner-img.png") no-repeat 50%;
