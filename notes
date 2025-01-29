@@ -1,7 +1,3 @@
-2 - don't forget to swap template tag with script tag after finishing the project
+1 - don't forget to swap template tag with script tag after finishing the project
 
-3 - fix problem when you click on product cart don't go to it's details when you click on add to fav or buy (done) ( use event.stopPropagation() )
-
-4 - finish pagination logic in accessories page (done)
-
-4 - finish pagination logic in accessories page (done)
+2 - fix problem when you click on product cart don't go to it's details when you click on add to fav or buy (done) ( use event.stopPropagation() )
