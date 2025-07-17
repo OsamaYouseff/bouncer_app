@@ -2,24 +2,24 @@
 
   LoaderComponent(v-if="isLoading")
   
-  section( v-else class="container mx-auto overflow-x-hidden ")
-    h1(class="text-center mb-10 text-[30px] font-medium")  CART
+  section( v-else class="container mx-auto overflow-x-hidden px-8 sm:px-0")
+    h1(class="text-center mb-10 text-[30px] font-medium") CART
     div(class="table-wrapper overflow-x-auto")
 
       //- Cart Table 
-      div(class="table w-full mb-10 min-w-[1024px]") 
+      div(class="table shadow-md rounded-md w-full min-w-full xl:min-w-[1024px]") 
         div.table-header-group
           div.table-row
-            div(class="img-container table-cell font-medium text-xl pb-5" ) FRODUCT
-            div(class="text table-cell min-w-[120px] font-medium text-xl pb-5" ) PRICE
-            div(class="price table-cell min-w-[120px] font-medium text-xl pb-5" ) QTY
-            div(class="unit-price table-cell min-w-[120px] font-medium text-xl pb-5") UNIT PRICE
+            div(class="img-container table-cell font-medium text-xl xl:pl-5 py-5" ) FRODUCT
+            div(class="text table-cell min-w-[120px] font-medium text-xl py-5" ) PRICE
+            div(class="price table-cell min-w-[120px] font-medium text-xl py-5" ) QTY
+            div(class="unit-price table-cell min-w-[120px] font-medium text-xl py-5") UNIT PRICE
           
         
         CartProduct(v-for="product in cartInfo.value?.products" :key="product.id" :product="product")
       
       div(v-if="!cartInfo.value?.products.length")
-        div(class="flex-center w-full min-h-[400px] grow") 
+        div(class="flex-center w-full min-h-[400px] grow shadow-xl rounded-md") 
           p(class="text-center text-[20px] font-medium text-[#475669]") Your cart is empty
         
       

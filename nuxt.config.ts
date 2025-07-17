@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "nuxt-toastify"],
+
   // devtools: { enabled: true }
 
   toastify: {
@@ -16,4 +17,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: "2025-07-17",
 });

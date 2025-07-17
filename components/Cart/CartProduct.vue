@@ -1,12 +1,12 @@
 <template lang="pug">
   //-  Cart Product 
-  div(class="table-row-group hover:bg-[#fff7f1] rounded-md")
+  div(class="table-row-group hover:bg-[#fff7f1] rounded-md ")
     div(class="table-row border-b-2")
       //-  product name & img
       div.table-cell.py-3
-        div.flex.gap-3
+        div.flex
           span
-          div(class="img-container max-w-[130px] max-h-[130px]")      
+          div(class="img-container max-w-[130px] max-h-[130px] mr-3")      
             img(:src="props.product.images[0]" alt="product-img" class="max-w-[130px] max-h-[130px] rounded-md")
 
           div.name {{ props.product.title }}
