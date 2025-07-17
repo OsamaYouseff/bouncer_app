@@ -1,5 +1,5 @@
 <template lang="pug">
-  
+
   LoaderComponent(v-if="isLoading")
   
   section( v-else class="container mx-auto overflow-x-hidden ")
@@ -10,7 +10,7 @@
       div(class="table w-full mb-10 min-w-[1024px]") 
         div.table-header-group
           div.table-row
-            div(class="img-container table-cell font-medium text-xl pb-5 pl-[60px]" ) FRODUCT
+            div(class="img-container table-cell font-medium text-xl pb-5" ) FRODUCT
             div(class="text table-cell min-w-[120px] font-medium text-xl pb-5" ) PRICE
             div(class="price table-cell min-w-[120px] font-medium text-xl pb-5" ) QTY
             div(class="unit-price table-cell min-w-[120px] font-medium text-xl pb-5") UNIT PRICE

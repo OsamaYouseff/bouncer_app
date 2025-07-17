@@ -1,28 +1,30 @@
 <template lang="pug">
   //-  Cart Product 
-  div(class="table-row-group cursor-pointer hover:bg-[#fff7f1] rounded-md")
+  div(class="table-row-group hover:bg-[#fff7f1] rounded-md")
     div(class="table-row border-b-2")
       //-  product name & img
-      div.table-cell.py-5.pl-1
-        div.flex
-          button(@click="handleDeleteItem" class="remove-icon mr-1 flex-center cursor-pointer"
-                style=" background: #fff7f8; border-radius: 50%; width: 28px; height: 28px;")
-            img(class="rounded-full w-[12px]" src="@/assets/icons/x.svg" alt="close-icon")
-          
+      div.table-cell.py-3
+        div.flex.gap-3
+          span
           div(class="img-container max-w-[130px] max-h-[130px]")      
             img(:src="props.product.images[0]" alt="product-img" class="max-w-[130px] max-h-[130px] rounded-md")
 
-          div.name {{ props.product.name }}
+          div.name {{ props.product.title }}
       
       //-  price
-      div(class="price table-cell") ${{ props.product.price * props.product.quantity }}
+      div.price.table-cell ${{ props.product.price * props.product.quantity }}
       
       //-  quantity
       div.quantity.table-cell 
         GeneralCounter( :quantity="amount" @update:quantity="handleChangeAmount")
       
       //-  unit price 
-      div(class="unit-price table-cell") ${{ props.product.price }}
+      div.unit-price.table-cell ${{ props.product.price }}
+      
+      //-  delete icon 
+      div.unit-price.table-cell
+        img(class="remove-icon rounded-md" @click="handleDeleteItem" src="@/assets/icons/delete.svg" alt="delete-icon" class="remove-icon")
+
 
 </template>
 
@@ -57,8 +59,6 @@ const handleDeleteItem = () => {
 };
 
 const handleChangeAmount = (currValue: number) => {
-  console.log(currValue, amount.value);
-
   if (currValue > amount.value) {
     productsStore.increaseQuantity(props.product.id);
     openMessage("The Amount has been increased successfully");
@@ -79,10 +79,6 @@ watch(amount, () => {
 }
 
 .remove-icon {
-  transition: all 0.3s ease-in-out;
-}
-
-.remove-icon:hover {
-  border: 1px solid red;
+  cursor: pointer;
 }
 </style>

@@ -12,8 +12,7 @@
         div(class="dis min-w-[200px] grow")
           p(class="date text-gray-300") 01 Jan, 2015
           h2(class="font-semibold text-[18px]") Typesetting industry
-          p(class="text-[14px]") 
-            Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
+          p(class="text-[14px]") Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
           
         
       
@@ -25,8 +24,7 @@
         div(class="dis min-w-[200px] grow")
           p(class="date text-gray-300") 01 Jan, 2015
           h2(class="font-semibold text-[18px]") Typesetting industry
-          p(class="text-[14px]") 
-            Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
+          p(class="text-[14px]") Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
           
         
       
@@ -38,7 +36,6 @@
         div(class="dis min-w-[200px] grow")
           p(class="date text-gray-300") 01 Jan, 2015
           h2(class="font-semibold text-[18px]") Typesetting industry
-          p(class="text-[14px]") 
-            Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
+          p(class="text-[14px]") Lorem ipsum dolor sit amet adipisicing elit consectetur amet.
 
 </template>

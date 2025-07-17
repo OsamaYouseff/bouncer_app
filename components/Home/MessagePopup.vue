@@ -43,7 +43,9 @@ const toggleModal = () => {
 
 onMounted(() => {
   setTimeout(() => {
+    if (localStorage.getItem("popup")) return;
     centerDialogVisible.value = true;
+    localStorage.setItem("popup", "true");
   }, 5000);
 });
 </script>

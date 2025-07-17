@@ -25,9 +25,7 @@
             
 
     //- load more 
-    button( @click="productsLimit += 5" class="mt-10 border-b-2 pb-3 px-0 mx-auto cursor-pointer h-10"
-      style="color: var(--primary); border-color: var(--primary)") 
-      LOAD MORE
+    button( @click="productsLimit += 5" class="mt-10 border-b-2 pb-3 px-0 mx-auto cursor-pointer h-10" style="color: var(--primary); border-color: var(--primary)") LOAD MORE
     
 </template>
 

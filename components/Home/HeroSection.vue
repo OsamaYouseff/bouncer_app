@@ -8,11 +8,9 @@
           div(class="text text-white")
             h1(class="mb-3 text-[36px]" style="text-shadow: 2px 2px 5px #000") iPhone X
             
-            p(class="w-[300px] text-[14px] mb-6") Lorem is a dummy or text used in and to fill empty spaces
-              placeholder in a layout that do not yet have content graphic.
+            p(class="w-[300px] text-[14px] mb-6") Lorem is a dummy or text used in and to fill empty spaces placeholder in a layout that do not yet have content graphic.
            
-            NuxtLink(class="pb-[2px] font-medium border-b-4 text-white hover:border-blue-400"
-              to="/") MORE
+            NuxtLink(class="pb-[2px] font-medium border-b-4 text-white hover:border-blue-400" to="/") MORE
               
           div(class="img-container lg:min-w-[600px] sm:max-w-[300px]")
           
